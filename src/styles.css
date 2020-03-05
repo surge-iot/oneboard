@@ -1,1 +1,41 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Roboto Slab', serif;
+}
+
+/* Flexbox layout styles */
+.flex{
+    display:flex;
+}
+.row{
+    flex-direction: row;
+}
+.column{
+    flex-direction: column;
+}
+.wrap{
+    flex-wrap: wrap;
+}
+.perfect-centering{
+    justify-content: center;
+    align-items: center;
+}
+
+.justify-start{
+    justify-content: start;
+}
+.justify-center{
+    justify-content: center;
+}
+.justify-end{
+    justify-content: end;
+}

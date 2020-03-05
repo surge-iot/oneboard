@@ -1,0 +1,40 @@
+<app-top-bar></app-top-bar>
+
+<section class="flex row perfect-centering">
+
+    <mat-card class="login-card ">
+        <mat-card-header>
+            <mat-card-title>LOGIN</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content >
+            <div class="flex column">
+                <form [formGroup]="loginForm" (ngSubmit)="login(loginForm.value)">
+                    <div class="flex column">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Email address</mat-label>
+                            <input matInput formControlName="emailAddress" required>
+                        </mat-form-field>
+                        <br>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Password</mat-label>
+                            <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" required>
+                            <a mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                                [attr.aria-pressed]="hide">
+                                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </a>
+                        </mat-form-field>
+
+                        <button mat-raised-button color="primary" type="submit">LOGIN</button>
+                        <br>
+                    </div>
+                </form>
+
+                <button mat-raised-button color="accent" (click)="authenticate()">LOGIN USING LDAP</button>
+                <p>Don't have an account? &nbsp; <a ui-sref='register'> Register</a></p>
+            </div>
+
+        </mat-card-content>
+
+    </mat-card>
+</section>
