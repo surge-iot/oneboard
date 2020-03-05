@@ -17,11 +17,15 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from "@angular/forms";
+import { HttpClientModule } from '@angular/common/http';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+
 // App components
 import { NavComponent } from './nav/nav.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +34,7 @@ import { LoginComponent } from './login/login.component';
     WelcomeComponent,
     TopBarComponent,
     LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -47,7 +52,9 @@ import { LoginComponent } from './login/login.component';
     MatCardModule,
     MatMenuModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatSnackBarModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -2,14 +2,14 @@
 
 <section class="flex row perfect-centering">
 
-    <mat-card class="login-card ">
+    <mat-card class="register-card ">
         <mat-card-header>
-            <mat-card-title>LOGIN</mat-card-title>
+            <mat-card-title>REGISTER</mat-card-title>
         </mat-card-header>
 
         <mat-card-content >
             <div class="flex column">
-                <form [formGroup]="loginForm" (ngSubmit)="login(loginForm.value)">
+                <form [formGroup]="registerForm" (ngSubmit)="register(registerForm.value)">
                     <div class="flex column">
                         <mat-form-field appearance="fill">
                             <mat-label>Email address</mat-label>
@@ -24,13 +24,18 @@
                                 <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                             </a>
                         </mat-form-field>
+                        <br>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Full Name</mat-label>
+                            <input matInput formControlName="fullName" required>
+                        </mat-form-field>
 
-                        <button mat-raised-button color="primary" type="submit">LOGIN</button>
+                        <button mat-raised-button color="primary" type="submit">Register</button>
                         <br>
                     </div>
                 </form>
+                <p>Already have an account? &nbsp; <a [routerLink]="['/login']"> Login</a></p>
 
-                <p>Don't have an account? &nbsp; <a [routerLink]="['/register']"> Register</a></p>
             </div>
 
         </mat-card-content>
