@@ -20,16 +20,15 @@ export class ResponseService {
   horizontalPosition: MatSnackBarHorizontalPosition = 'right';
   verticalPosition: MatSnackBarVerticalPosition = 'bottom';
   snackBarAutoHide = '3000';
-  constructor(private snackBar: MatSnackBar) { 
+  constructor(private snackBar: MatSnackBar) {
     this.snackBarConfig = new MatSnackBarConfig();
     this.snackBarConfig.horizontalPosition = this.horizontalPosition;
     this.snackBarConfig.verticalPosition = this.verticalPosition;
     this.snackBarConfig.duration = parseInt(this.snackBarAutoHide, 0);
-    this.snackBarConfig.panelClass = 'error-snackbar';
   }
 
   openSnackBar(message: string) {
-    
+
     this.snackBarRef = this.snackBar.open(message, '', this.snackBarConfig);
   }
 
@@ -45,11 +44,16 @@ export class ResponseService {
           `Backend returned code ${error.status}, ` +
           `body was: ${error.error}`);
       }
-
+      this.snackBarConfig.panelClass = 'error-snackbar';
       this.openSnackBar(error.error);
     }
     // return an observable with a user-facing error message
     return throwError(
       error.error);
   };
+
+  handleSuccess = (message: string) => {
+    this.snackBarConfig.panelClass = 'success-snackbar';
+    this.openSnackBar(message);
+  }
 }

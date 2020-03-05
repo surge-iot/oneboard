@@ -29,4 +29,10 @@ export class AuthService {
       catchError(this.responseService.handleError)
     );
   }
+
+  login(user: User): Observable<string> {
+    return this.http.post<string>(this.loginUrl, user).pipe(
+      catchError(this.responseService.handleError)
+    );
+  }
 }

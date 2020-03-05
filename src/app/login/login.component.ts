@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { AuthService, User } from '../services/auth.service';
+import { ResponseService } from '../services/response.service';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +11,7 @@ import { FormBuilder } from '@angular/forms';
 export class LoginComponent implements OnInit {
   hide = true;
   loginForm;
-  constructor(private formBuilder: FormBuilder, ) {
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private responseService: ResponseService) {
     this.loginForm = this.formBuilder.group({
       emailAddress: '',
       password: ''
@@ -19,9 +21,12 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  login(user) {
-    this.loginForm.reset();
-
-    console.warn('Your order has been submitted', user);
+  login(user: User) {
+    this.authService.login(user)
+      .subscribe((data: string) =>{
+        localStorage.setItem('access_token', data)
+        this.responseService.handleSuccess('Login successful');
+      }
+    );
   }
 }

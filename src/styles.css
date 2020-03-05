@@ -47,3 +47,7 @@ h6 {
 .error-snackbar{
     color: red;
 }
+
+.success-snackbar{
+    color: green;
+}

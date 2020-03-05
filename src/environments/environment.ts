@@ -2,9 +2,17 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+export function tokenGetter() {
+  return localStorage.getItem("access_token");
+}
+
 export const environment = {
   production: false,
-  apiRoot: 'http://10.129.149.33:1337/'
+  apiRoot: 'http://10.129.149.33:1337/',
+  jwtConfig: {
+    tokenGetter: tokenGetter,
+    whitelistedDomains: ["10.129.149.33"],
+  }
 };
 
 /*

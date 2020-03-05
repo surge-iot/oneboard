@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {environment} from '../environments/environment'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,6 +20,7 @@ import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from '@angular/common/http';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { JwtModule } from "@auth0/angular-jwt";
 
 // App components
 import { NavComponent } from './nav/nav.component';
@@ -54,7 +56,10 @@ import { RegisterComponent } from './register/register.component';
     MatFormFieldModule,
     MatInputModule,
     MatSnackBarModule,
-    HttpClientModule
+    HttpClientModule,
+    JwtModule.forRoot({
+      config: environment.jwtConfig
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
