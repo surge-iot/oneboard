@@ -28,6 +28,11 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { OperatorComponent } from './operator/operator.component';
+import { HomeComponent } from './operator/home/home.component';
+import { LocationTreeComponent } from './location-tree/location-tree.component';
+import { MatTreeModule } from '@angular/material/tree';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -37,6 +42,9 @@ import { RegisterComponent } from './register/register.component';
     TopBarComponent,
     LoginComponent,
     RegisterComponent,
+    OperatorComponent,
+    HomeComponent,
+    LocationTreeComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -59,7 +67,9 @@ import { RegisterComponent } from './register/register.component';
     HttpClientModule,
     JwtModule.forRoot({
       config: environment.jwtConfig
-    })
+    }),
+    MatTreeModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]
