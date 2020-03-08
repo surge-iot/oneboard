@@ -33,6 +33,7 @@ import { HomeComponent } from './operator/home/home.component';
 import { LocationTreeComponent } from './location-tree/location-tree.component';
 import { MatTreeModule } from '@angular/material/tree';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     OperatorComponent,
     HomeComponent,
     LocationTreeComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     AppRoutingModule,

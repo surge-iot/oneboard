@@ -14,7 +14,9 @@ h5,
 h6 {
     font-family: 'Roboto Slab', serif;
 }
-
+.logo{
+    padding-top:10px;
+}
 /* Flexbox layout styles */
 .flex{
     display:flex;
