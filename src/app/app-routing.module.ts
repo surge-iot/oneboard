@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { OperatorComponent } from './operator/operator.component';
 import { HomeComponent } from './operator/home/home.component';
+import { LocationComponent } from './operator/location/location.component';
 
 const routes: Routes = [
   { path: 'welcome', component: WelcomeComponent },
@@ -15,7 +16,8 @@ const routes: Routes = [
   {
     path: 'operator', component: OperatorComponent,
     children: [
-      { path: '', component: HomeComponent }
+      { path: '', component: HomeComponent },
+      { path: 'location/:id', component: LocationComponent }
     ]
   },
   { path: '',   redirectTo: '/welcome', pathMatch: 'full' },

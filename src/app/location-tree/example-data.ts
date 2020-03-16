@@ -1,7 +1,7 @@
 /** Example file/folder data. */
 export const files = [
   {
-    name: 'components',
+    name: 'KReSIT',
     type: 'folder',
     children: [
       {

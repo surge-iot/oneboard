@@ -1,6 +1,6 @@
 <app-top-bar></app-top-bar>
 
-<section class="flex row perfect-centering">
+<section class="flex layout-row layout-perfect-centering">
 
     <mat-card class="register-card ">
         <mat-card-header>
@@ -8,9 +8,9 @@
         </mat-card-header>
 
         <mat-card-content >
-            <div class="flex column">
+            <div class="flex layout-column">
                 <form [formGroup]="registerForm" (ngSubmit)="register(registerForm.value)">
-                    <div class="flex column">
+                    <div class="flex layout-column">
                         <mat-form-field appearance="fill">
                             <mat-label>Email address</mat-label>
                             <input matInput formControlName="emailAddress" required>

@@ -1,12 +1,17 @@
+// Core modules
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {environment} from '../environments/environment'
-
+import { environment } from '../environments/environment'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatSliderModule } from '@angular/material/slider';
 import { LayoutModule } from '@angular/cdk/layout';
+import { ReactiveFormsModule } from "@angular/forms";
+import { HttpClientModule } from '@angular/common/http';
+import { JwtModule } from "@auth0/angular-jwt";
+
+// Material modules
+import { MatSliderModule } from '@angular/material/slider';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -17,10 +22,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { ReactiveFormsModule } from "@angular/forms";
-import { HttpClientModule } from '@angular/common/http';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
-import { JwtModule } from "@auth0/angular-jwt";
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatTreeModule } from '@angular/material/tree';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 // App components
 import { NavComponent } from './nav/nav.component';
@@ -31,9 +35,13 @@ import { RegisterComponent } from './register/register.component';
 import { OperatorComponent } from './operator/operator.component';
 import { HomeComponent } from './operator/home/home.component';
 import { LocationTreeComponent } from './location-tree/location-tree.component';
-import { MatTreeModule } from '@angular/material/tree';
-import {MatTooltipModule} from '@angular/material/tooltip';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { LocationComponent } from './operator/location/location.component';
+
+
+export function tokenGetter() {
+  return localStorage.getItem("access_token");
+}
 
 @NgModule({
   declarations: [
@@ -47,14 +55,24 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     HomeComponent,
     LocationTreeComponent,
     PageNotFoundComponent,
+    LocationComponent,
   ],
   imports: [
+    // Core
     AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
-    MatSliderModule,
     LayoutModule,
     ReactiveFormsModule,
+    HttpClientModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        whitelistedDomains: environment.jwtConfig.whitelistedDomains,
+      }
+    }),
+    // Material
+    MatSliderModule,
     MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,
@@ -66,10 +84,6 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     MatFormFieldModule,
     MatInputModule,
     MatSnackBarModule,
-    HttpClientModule,
-    JwtModule.forRoot({
-      config: environment.jwtConfig
-    }),
     MatTreeModule,
     MatTooltipModule
   ],

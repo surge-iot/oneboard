@@ -1,0 +1,14 @@
+<div class="flex layout-row layout-margin">
+    <span *ngFor="let location of path">
+        <button mat-button [routerLink]="['/operator','location',location.id]">{{location.name}} </button>
+        <mat-icon aria-hidden="false" aria-label="next" class="layout-margin">chevron_right</mat-icon>
+
+    </span>
+
+</div>
+
+
+<div class="flex layout-row layout-margin">
+    <button mat-flat-button color="accent" *ngFor="let location of children"
+        [routerLink]="['/operator','location',location.id]">{{location.name}}</button>
+</div>

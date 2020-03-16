@@ -21,18 +21,24 @@ h6 {
 .flex{
     display:flex;
 }
-.row{
+.layout-row{
     flex-direction: row;
 }
-.column{
+.layout-column{
     flex-direction: column;
 }
-.wrap{
+.layout-wrap{
     flex-wrap: wrap;
 }
-.perfect-centering{
+.layout-perfect-centering{
     justify-content: center;
     align-items: center;
+}
+.layout-margin{
+    margin:5px;
+}
+.layout-padding{
+    padding:5px;
 }
 
 .justify-start{
