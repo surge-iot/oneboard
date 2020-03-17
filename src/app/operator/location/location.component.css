@@ -1,0 +1,13 @@
+.path .location-path-item{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.locations .location-button{
+    margin:15px;
+}
+
+.locations .location-name{
+    margin-left:10px;
+}
