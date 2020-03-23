@@ -37,6 +37,7 @@ import { HomeComponent } from './operator/home/home.component';
 import { LocationTreeComponent } from './location-tree/location-tree.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LocationComponent } from './operator/location/location.component';
+import { LogoutComponent } from './logout/logout.component';
 
 
 export function tokenGetter() {
@@ -56,6 +57,7 @@ export function tokenGetter() {
     LocationTreeComponent,
     PageNotFoundComponent,
     LocationComponent,
+    LogoutComponent,
   ],
   imports: [
     // Core
