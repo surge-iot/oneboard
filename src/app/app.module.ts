@@ -27,7 +27,6 @@ import { MatTreeModule } from '@angular/material/tree';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
 // App components
-import { NavComponent } from './nav/nav.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { OperatorComponent } from './operator/operator.component';
 import { HomeComponent } from './operator/home/home.component';
@@ -45,7 +44,6 @@ export function tokenGetter() {
 @NgModule({
   declarations: [
     AppComponent,
-    NavComponent,
     WelcomeComponent,
     OperatorComponent,
     HomeComponent,
