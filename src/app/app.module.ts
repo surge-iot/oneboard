@@ -29,16 +29,14 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 // App components
 import { NavComponent } from './nav/nav.component';
 import { WelcomeComponent } from './welcome/welcome.component';
-import { TopBarComponent } from './top-bar/top-bar.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
 import { OperatorComponent } from './operator/operator.component';
 import { HomeComponent } from './operator/home/home.component';
 import { LocationTreeComponent } from './location-tree/location-tree.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LocationComponent } from './operator/location/location.component';
-import { LogoutComponent } from './logout/logout.component';
 
+// App modules
+import { AuthModule } from './auth/auth.module';
 
 export function tokenGetter() {
   return localStorage.getItem("access_token");
@@ -49,17 +47,15 @@ export function tokenGetter() {
     AppComponent,
     NavComponent,
     WelcomeComponent,
-    TopBarComponent,
-    LoginComponent,
-    RegisterComponent,
     OperatorComponent,
     HomeComponent,
     LocationTreeComponent,
     PageNotFoundComponent,
     LocationComponent,
-    LogoutComponent,
   ],
   imports: [
+    // App modules
+    AuthModule,
     // Core
     AppRoutingModule,
     BrowserModule,
@@ -87,7 +83,7 @@ export function tokenGetter() {
     MatInputModule,
     MatSnackBarModule,
     MatTreeModule,
-    MatTooltipModule
+    MatTooltipModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

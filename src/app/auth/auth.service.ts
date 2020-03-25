@@ -3,7 +3,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { ResponseService } from './response.service';
+import { ResponseService } from '../services/response.service';
 
 export interface User {
   emailAddress: string;
