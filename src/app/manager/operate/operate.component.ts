@@ -12,9 +12,7 @@ export class OperateComponent implements OnInit {
   children: Location[];
   location: Location;
   path: Location[];
-  constructor(private route: ActivatedRoute, private router: Router, private locationService: LocationService) {
-    this.children = [];
-  }
+  constructor(private route: ActivatedRoute, private router: Router, private locationService: LocationService) { }
 
   ngOnInit(): void {
 
