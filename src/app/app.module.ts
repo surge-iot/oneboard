@@ -28,10 +28,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 
 // App components
 import { WelcomeComponent } from './welcome/welcome.component';
-import { OperatorComponent } from './operator/operator.component';
-import { HomeComponent } from './operator/home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { LocationComponent } from './operator/location/location.component';
 
 // App modules
 import { AuthModule } from './auth/auth.module';
@@ -46,10 +43,7 @@ export function tokenGetter() {
   declarations: [
     AppComponent,
     WelcomeComponent,
-    OperatorComponent,
-    HomeComponent,
     PageNotFoundComponent,
-    LocationComponent,
   ],
   imports: [
     // App modules

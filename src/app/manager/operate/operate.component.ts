@@ -4,11 +4,11 @@ import { switchMap } from 'rxjs/operators';
 
 import { LocationService, Location } from '../../location/location.service'
 @Component({
-  selector: 'app-location',
-  templateUrl: './location.component.html',
-  styleUrls: ['./location.component.css']
+  selector: 'app-manager-operate',
+  templateUrl: './operate.component.html',
+  styleUrls: ['./operate.component.css']
 })
-export class LocationComponent implements OnInit {
+export class OperateComponent implements OnInit {
   children: Location[];
   location: Location;
   path: Location[];
