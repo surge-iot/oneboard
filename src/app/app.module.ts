@@ -36,6 +36,7 @@ import { LocationComponent } from './operator/location/location.component';
 
 // App modules
 import { AuthModule } from './auth/auth.module';
+import { ManagerModule } from './manager/manager.module';
 
 export function tokenGetter() {
   return localStorage.getItem("access_token");
@@ -54,6 +55,7 @@ export function tokenGetter() {
   imports: [
     // App modules
     AuthModule,
+    ManagerModule,
     // Core
     AppRoutingModule,
     BrowserModule,
