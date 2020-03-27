@@ -14,15 +14,20 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { AuthModule } from '../auth/auth.module';
+import { LocationModule } from '../location/location.module';
 
 
 @NgModule({
   declarations: [HomeComponent, ManagerComponent],
   imports: [
+    // App modules
     AuthModule,
+    LocationModule,
+    // Core
     CommonModule,
     ManagerRoutingModule,
     LayoutModule,
+    // Material
     MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,

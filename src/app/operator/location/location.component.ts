@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 
-import { LocationService, Location } from '../../services/location.service'
+import { LocationService, Location } from '../../location/location.service'
 @Component({
   selector: 'app-location',
   templateUrl: './location.component.html',

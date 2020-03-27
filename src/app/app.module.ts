@@ -30,13 +30,13 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { OperatorComponent } from './operator/operator.component';
 import { HomeComponent } from './operator/home/home.component';
-import { LocationTreeComponent } from './location-tree/location-tree.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LocationComponent } from './operator/location/location.component';
 
 // App modules
 import { AuthModule } from './auth/auth.module';
 import { ManagerModule } from './manager/manager.module';
+import { LocationModule } from './location/location.module';
 
 export function tokenGetter() {
   return localStorage.getItem("access_token");
@@ -48,7 +48,6 @@ export function tokenGetter() {
     WelcomeComponent,
     OperatorComponent,
     HomeComponent,
-    LocationTreeComponent,
     PageNotFoundComponent,
     LocationComponent,
   ],
@@ -56,6 +55,7 @@ export function tokenGetter() {
     // App modules
     AuthModule,
     ManagerModule,
+    LocationModule,
     // Core
     AppRoutingModule,
     BrowserModule,
