@@ -1,8 +1,0 @@
-<section class="path">
-  <div class="flex layout-row layout-margin">
-      <span *ngFor="let location of path" class="location-path-item">
-          <button mat-button [routerLink]="[linkRelativeTo,location.id]">{{location.name}} </button>
-          <mat-icon aria-hidden="false" aria-label="next" class="layout-margin">chevron_right</mat-icon>
-      </span>
-  </div>
-</section>
