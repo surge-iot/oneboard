@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
       .subscribe((data: string) =>{
         localStorage.setItem('access_token', data)
         this.responseService.handleSuccess('Login successful');
-        this.router.navigate(['/operator']);
+        this.router.navigate(['/manager']);
       }
     );
   }

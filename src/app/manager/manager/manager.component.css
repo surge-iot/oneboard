@@ -20,3 +20,7 @@ app-logout{
   position: absolute;
   right:10px;
 }
+
+.mat-list-item-disabled{
+  background-color: transparent;
+}
