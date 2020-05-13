@@ -5,6 +5,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { LocationBreadcrumbComponent } from './location-breadcrumb/location-breadcrumb.component';
 import { RouterModule } from '@angular/router';
 
@@ -23,6 +24,7 @@ import { RouterModule } from '@angular/router';
     MatTreeModule,
     MatIconModule,
     MatButtonModule,
+    MatProgressBarModule,
   ],
   exports: [
     LocationTreeComponent,
