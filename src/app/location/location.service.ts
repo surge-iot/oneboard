@@ -36,26 +36,14 @@ export class LocationService {
     );
   }
   // Get children of location
-  getChildren (location:Location): Observable<Location[]> {
-    return this.http.get<Location[]>(this.locationUrl+location.id+'/children').pipe(
-      catchError(this.responseService.handleError)
-    );
-  }
-  // Get ancestors of location
-  getAncestors (location:Location): Observable<Location[]> {
-    return this.http.get<Location[]>(this.locationUrl+location.id+'/ancestors').pipe(
-      catchError(this.responseService.handleError)
-    );
-  }
-  // Get descendants of location
-  getDescendants (location:Location): Observable<Location[]> {
-    return this.http.get<Location[]>(this.locationUrl+location.id+'/descendants').pipe(
+  getChildren (id:number): Observable<Location[]> {
+    return this.http.get<Location[]>(this.locationUrl+'?parentId='+id).pipe(
       catchError(this.responseService.handleError)
     );
   }
   // Get path of location
-  getPath (location:Location): Observable<Location[]> {
-    return this.http.get<Location[]>(this.locationUrl+location.id+'/path').pipe(
+  getPath (id:number): Observable<Location[]> {
+    return this.http.get<Location[]>(this.locationUrl+id+'/path').pipe(
       catchError(this.responseService.handleError)
     );
   }

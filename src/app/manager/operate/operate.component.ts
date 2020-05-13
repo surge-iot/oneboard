@@ -23,9 +23,9 @@ export class OperateComponent implements OnInit {
         this.locationService.getLocation(+params.get('id')))
     ).subscribe((location: Location) => {
       this.location = location;
-      this.locationService.getChildren(this.location)
+      this.locationService.getChildren(this.location.id)
         .subscribe((locations: Location[]) => this.children = locations);
-      this.locationService.getPath(this.location)
+      this.locationService.getPath(this.location.id)
         .subscribe((locations: Location[]) => {
           let path = locations;
           this.path = path.reverse();

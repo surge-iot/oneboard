@@ -18,7 +18,7 @@ export class LocationBreadcrumbComponent implements OnInit {
   }
   ngOnInit():void{}
   ngOnChanges(): void {
-    this.locationService.getPath(this.location)
+    this.locationService.getPath(this.location.id)
     .subscribe((locations: Location[]) => {
       let path = locations;
       this.path = path.reverse();

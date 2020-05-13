@@ -5,9 +5,9 @@
 
 export const environment = {
   production: false,
-  apiRoot: 'http://localhost:1337/',
+  apiRoot: 'http://localhost:3000/api/',
   jwtConfig: {
-    whitelistedDomains: ["localhost:1337"],
+    whitelistedDomains: ["localhost:3000"],
   }
 };
 
