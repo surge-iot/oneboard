@@ -90,7 +90,9 @@ export class BaseComponent {
 
   onCreateChild(node:Node){
     console.log("create child of ", node.label);
-    this._bottomSheet.open(CreateSubClassComponent);
+    this._bottomSheet.open(CreateSubClassComponent,{
+      data: { node, service: this.services[this.classType] },
+    });
 
   }
 

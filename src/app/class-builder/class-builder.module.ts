@@ -12,6 +12,9 @@ import { BaseComponent } from './components/base/base.component';
 import { NgxGraphModule } from '@swimlane/ngx-graph';
 import { CreateSubClassComponent } from './components/create-sub-class/create-sub-class.component';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [BaseComponent, CreateSubClassComponent],
@@ -25,7 +28,16 @@ import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
     MatIconModule,
     MatListModule,
     MatBottomSheetModule,
-    NgxGraphModule
-  ]
+    MatFormFieldModule,
+    MatInputModule,
+    NgxGraphModule,
+    FormsModule
+  ],
+  entryComponents: [
+    BaseComponent,
+    CreateSubClassComponent,
+    MatFormFieldModule,
+    MatInputModule
+  ],
 })
 export class ClassBuilderModule { }

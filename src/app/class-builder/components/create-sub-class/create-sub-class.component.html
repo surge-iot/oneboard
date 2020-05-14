@@ -1,1 +1,16 @@
-<p>create-sub-class works!</p>
+<div class="create-sub-class-container">
+  <form action="">
+    <h2>Create sub class</h2>
+    <mat-form-field appearance="fill">
+      <mat-label>Parent Class</mat-label>
+      <input matInput disabled value="{{parent.label}}">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Sub Class Name</mat-label>
+      <input matInput [(ngModel)]="name">
+    </mat-form-field>
+
+    <button mat-raised-button color="primary">Save</button>
+  </form>
+</div>
