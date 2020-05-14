@@ -9,7 +9,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { BaseComponent } from './components/base/base.component';
-import {NgxGraphModule} from '@swimlane/ngx-graph';
+import { NgxGraphModule } from '@swimlane/ngx-graph';
 
 @NgModule({
   declarations: [BaseComponent],
