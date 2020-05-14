@@ -34,6 +34,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { AuthModule } from './auth/auth.module';
 import { ManagerModule } from './manager/manager.module';
 import { LocationModule } from './location/location.module';
+import { ClassBuilderModule } from './class-builder/class-builder.module';
 
 export function tokenGetter() {
   return localStorage.getItem("access_token");
@@ -50,6 +51,7 @@ export function tokenGetter() {
     AuthModule,
     ManagerModule,
     LocationModule,
+    ClassBuilderModule,
     // Core
     AppRoutingModule,
     BrowserModule,
