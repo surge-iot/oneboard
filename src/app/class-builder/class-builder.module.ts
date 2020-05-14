@@ -15,6 +15,7 @@ import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UtilsModule } from '../utils/utils.module';
 
 @NgModule({
   declarations: [BaseComponent, CreateSubClassComponent],
@@ -32,13 +33,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatInputModule,
     NgxGraphModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    UtilsModule
   ],
   entryComponents: [
     BaseComponent,
     CreateSubClassComponent,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
   ],
 })
 export class ClassBuilderModule { }

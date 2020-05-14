@@ -8,6 +8,8 @@ import { EquipmentClassService } from '../../services/equipment-class.service';
 import { PointClassService } from '../../services/point-class.service';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { CreateSubClassComponent } from '../create-sub-class/create-sub-class.component';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from '../../../utils/components/confirm-dialog/confirm-dialog.component';
 
 export interface Node {
   id: string;
@@ -39,7 +41,8 @@ export class BaseComponent {
     private locationClassService: LocationClassService,
     private equipmentClassService: EquipmentClassService,
     private pointClassService: PointClassService,
-    private _bottomSheet: MatBottomSheet) {
+    private _bottomSheet: MatBottomSheet,
+    public _dialog: MatDialog) {
     this.services = {
       location: locationClassService,
       equipment: equipmentClassService,
@@ -84,8 +87,20 @@ export class BaseComponent {
     });
   }
 
-  onDelete(id) {
-    console.log('Delete ', id);
+  async onDelete(node:Node) {
+    console.log('Delete ', node.id);
+    const dialogRef = this._dialog.open(ConfirmDialogComponent, {
+      width: '250px',
+      data: "Are you sure you want to delete this?"
+    });
+
+    const confirmed = await dialogRef.afterClosed().toPromise();
+    if(confirmed){
+      const deleted = await this.services[this.classType].delete(node.id).toPromise();
+      if(deleted){
+        await this.postInit();
+      }
+    }
   }
 
   async onCreateChild(node: Node) {
@@ -93,7 +108,7 @@ export class BaseComponent {
       data: { node, service: this.services[this.classType] },
     });
     const createdClass = await bottomSheetRef.afterDismissed().toPromise();
-    if(!createdClass){
+    if (!createdClass) {
       return;
     }
     this.nodes = [
