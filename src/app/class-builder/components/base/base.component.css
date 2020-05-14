@@ -23,3 +23,10 @@
 .node:hover .delete-btn, .node:hover .create-child-btn{
   display:block;
 }
+
+.create-sub-class-fab-container{
+  position:fixed;
+  bottom:50px;
+  right:50px;
+  z-index: 2;
+}

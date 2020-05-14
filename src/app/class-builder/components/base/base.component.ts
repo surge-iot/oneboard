@@ -95,11 +95,12 @@ export class BaseComponent {
     });
 
     const confirmed = await dialogRef.afterClosed().toPromise();
-    if(confirmed){
-      const deleted = await this.services[this.classType].delete(node.id).toPromise();
-      if(deleted){
-        await this.postInit();
-      }
+    if(!confirmed){
+      return;
+    }
+    const deleted = await this.services[this.classType].delete(node.id).toPromise();
+    if(deleted){
+      await this.postInit();
     }
   }
 
@@ -111,18 +112,8 @@ export class BaseComponent {
     if (!createdClass) {
       return;
     }
-    this.nodes = [
-      ...this.nodes,
-      { id: createdClass.id, label: createdClass.name }
-    ];
-    this.links = [
-      ...this.links,
-      {
-        id: `${createdClass.id}-${createdClass.parentId}`,
-        target: createdClass.id,
-        source: createdClass.parentId
-      }
-    ]
+    await this.postInit();
+
   }
 
 }

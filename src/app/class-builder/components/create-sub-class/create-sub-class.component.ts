@@ -38,6 +38,8 @@ export class CreateSubClassComponent implements OnInit {
 
   async onSubmit(newClass) {
     // Process checkout data here
+    Object.keys(newClass).forEach((key) => (newClass[key] == null) && delete newClass[key]);
+
     const createdClass = await this.service.create(newClass).toPromise();
     if(createdClass){
       this.createForm.reset();
