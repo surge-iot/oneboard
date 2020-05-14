@@ -1,6 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatBottomSheetRef } from '@angular/material/bottom-sheet';
 import { MAT_BOTTOM_SHEET_DATA } from '@angular/material/bottom-sheet';
+import { FormBuilder } from '@angular/forms';
+
 import { Node } from '../base/base.component'
 import { LocationClassService } from '../../services/location-class.service';
 import { EquipmentClassService } from '../../services/equipment-class.service';
@@ -13,17 +15,34 @@ import { PointClassService } from '../../services/point-class.service';
 export class CreateSubClassComponent implements OnInit {
 
   constructor(private _bottomSheetRef: MatBottomSheetRef<CreateSubClassComponent>,
-    @Inject(MAT_BOTTOM_SHEET_DATA) public data: { node: Node, services: LocationClassService | EquipmentClassService | PointClassService }) {
-      this.parent = data.node;
-     }
+    private formBuilder: FormBuilder,
+    @Inject(MAT_BOTTOM_SHEET_DATA)
+    public data: { node: Node, service: LocationClassService | EquipmentClassService | PointClassService }) {
+    this.parent = data.node;
+    this.service = data.service;
+    this.createForm = this.formBuilder.group({
+      name: '',
+      parentId:this.parent.id
+    });
+  }
   parent: Node;
-  name:string;
+  name: string;
+  createForm;
+  service: LocationClassService | EquipmentClassService | PointClassService;
   ngOnInit(): void {
-    console.log(this.data);
   }
   openLink(event: MouseEvent): void {
     this._bottomSheetRef.dismiss();
     event.preventDefault();
   }
 
+  async onSubmit(newClass) {
+    // Process checkout data here
+    const createdClass = await this.service.create(newClass).toPromise();
+    if(createdClass){
+      this.createForm.reset();
+      this._bottomSheetRef.dismiss(createdClass);
+      console.warn('New class created: ', createdClass);
+    }
+  }
 }

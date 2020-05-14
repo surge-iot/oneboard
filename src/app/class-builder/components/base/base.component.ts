@@ -6,7 +6,7 @@ import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { LocationClassService } from '../../services/location-class.service';
 import { EquipmentClassService } from '../../services/equipment-class.service';
 import { PointClassService } from '../../services/point-class.service';
-import {MatBottomSheet} from '@angular/material/bottom-sheet';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { CreateSubClassComponent } from '../create-sub-class/create-sub-class.component';
 
 export interface Node {
@@ -40,17 +40,17 @@ export class BaseComponent {
     private equipmentClassService: EquipmentClassService,
     private pointClassService: PointClassService,
     private _bottomSheet: MatBottomSheet) {
-      this.services={
-        location:locationClassService,
-        equipment:equipmentClassService,
-        point:pointClassService
-      }
+    this.services = {
+      location: locationClassService,
+      equipment: equipmentClassService,
+      point: pointClassService
+    }
   }
   classType: string;
   nodes: Node[];
   links: Link[];
   services: {
-    location: LocationClassService ,
+    location: LocationClassService,
     equipment: EquipmentClassService,
     point: PointClassService
   };
@@ -88,12 +88,26 @@ export class BaseComponent {
     console.log('Delete ', id);
   }
 
-  onCreateChild(node:Node){
-    console.log("create child of ", node.label);
-    this._bottomSheet.open(CreateSubClassComponent,{
+  async onCreateChild(node: Node) {
+    const bottomSheetRef = this._bottomSheet.open(CreateSubClassComponent, {
       data: { node, service: this.services[this.classType] },
     });
-
+    const createdClass = await bottomSheetRef.afterDismissed().toPromise();
+    if(!createdClass){
+      return;
+    }
+    this.nodes = [
+      ...this.nodes,
+      { id: createdClass.id, label: createdClass.name }
+    ];
+    this.links = [
+      ...this.links,
+      {
+        id: `${createdClass.id}-${createdClass.parentId}`,
+        target: createdClass.id,
+        source: createdClass.parentId
+      }
+    ]
   }
 
 }
