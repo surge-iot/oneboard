@@ -10,9 +10,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { BaseComponent } from './components/base/base.component';
 import { NgxGraphModule } from '@swimlane/ngx-graph';
+import { CreateChildComponent } from './components/create-child/create-child.component';
+import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 
 @NgModule({
-  declarations: [BaseComponent],
+  declarations: [BaseComponent, CreateChildComponent],
   imports: [
     CommonModule,
     ClassBuilderRoutingModule,
@@ -22,6 +24,7 @@ import { NgxGraphModule } from '@swimlane/ngx-graph';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
+    MatBottomSheetModule,
     NgxGraphModule
   ]
 })

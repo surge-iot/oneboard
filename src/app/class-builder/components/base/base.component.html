@@ -41,11 +41,19 @@
               {{node.label}}
             </svg:text>
 
-            <svg:g class="delete-btn" (click)="onClickMe(node.id)">
+            <svg:g class="delete-btn" (click)="onDelete(node.id)">
               <svg:circle r="10" fill="#ef5350" [attr.cx]="node.dimension.width" />
               <svg:text alignment-baseline="central" text-anchor="middle" [attr.x]="node.dimension.width"
                 fill="#ffffff">
                 x
+              </svg:text>
+            </svg:g>
+
+            <svg:g class="create-child-btn" (click)="onCreateChild(node)">
+              <svg:circle r="10" fill="#2196f3" [attr.cx]="node.dimension.width" [attr.cy]="node.dimension.height"/>
+              <svg:text alignment-baseline="central" text-anchor="middle" [attr.x]="node.dimension.width" [attr.y]="node.dimension.height"
+                fill="#ffffff">
+                +
               </svg:text>
             </svg:g>
 

@@ -16,10 +16,10 @@
   z-index: 1;
 }
 
-.node .delete-btn{
+.node .delete-btn, .node .create-child-btn{
   display:none;
 }
 
-.node:hover .delete-btn{
+.node:hover .delete-btn, .node:hover .create-child-btn{
   display:block;
 }

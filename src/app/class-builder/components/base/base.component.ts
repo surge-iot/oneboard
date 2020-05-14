@@ -6,6 +6,8 @@ import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { LocationClassService } from '../../services/location-class.service';
 import { EquipmentClassService } from '../../services/equipment-class.service';
 import { PointClassService } from '../../services/point-class.service';
+import {MatBottomSheet} from '@angular/material/bottom-sheet';
+import { CreateChildComponent } from '../create-child/create-child.component';
 
 export interface Node {
   id: string;
@@ -36,7 +38,8 @@ export class BaseComponent {
     private router: Router,
     private locationClassService: LocationClassService,
     private equipmentClassService: EquipmentClassService,
-    private pointClassService: PointClassService) {
+    private pointClassService: PointClassService,
+    private _bottomSheet: MatBottomSheet) {
       this.services={
         location:locationClassService,
         equipment:equipmentClassService,
@@ -81,8 +84,15 @@ export class BaseComponent {
     });
   }
 
-  onClickMe(id) {
+  onDelete(id) {
     console.log('Delete ', id);
   }
 
+  onCreateChild(node:Node){
+    console.log("create child of ", node.label);
+    this._bottomSheet.open(CreateChildComponent);
+
+  }
+
 }
+
