@@ -15,3 +15,11 @@
   top: 0;
   z-index: 1;
 }
+
+.node .delete-btn{
+  display:none;
+}
+
+.node:hover .delete-btn{
+  display:block;
+}

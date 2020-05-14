@@ -63,4 +63,9 @@ export class BaseComponent {
       }
     });
   }
+
+  onClickMe(id) {
+    console.log('Delete ', id);
+  }
+
 }
