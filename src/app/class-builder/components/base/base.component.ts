@@ -7,7 +7,7 @@ import { LocationClassService } from '../../services/location-class.service';
 import { EquipmentClassService } from '../../services/equipment-class.service';
 import { PointClassService } from '../../services/point-class.service';
 import {MatBottomSheet} from '@angular/material/bottom-sheet';
-import { CreateChildComponent } from '../create-child/create-child.component';
+import { CreateSubClassComponent } from '../create-sub-class/create-sub-class.component';
 
 export interface Node {
   id: string;
@@ -90,7 +90,7 @@ export class BaseComponent {
 
   onCreateChild(node:Node){
     console.log("create child of ", node.label);
-    this._bottomSheet.open(CreateChildComponent);
+    this._bottomSheet.open(CreateSubClassComponent);
 
   }
 
