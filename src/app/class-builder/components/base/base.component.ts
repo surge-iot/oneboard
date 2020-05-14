@@ -4,13 +4,15 @@ import { Observable, of } from 'rxjs';
 import { map, shareReplay, switchMap } from 'rxjs/operators';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { LocationClassService } from '../../services/location-class.service';
+import { EquipmentClassService } from '../../services/equipment-class.service';
+import { PointClassService } from '../../services/point-class.service';
 
-export interface Node{
+export interface Node {
   id: string;
   label: string;
 }
 
-export interface Link{
+export interface Link {
   id: string;
   source: string;
   target: string;
@@ -29,11 +31,26 @@ export class BaseComponent {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver, private route: ActivatedRoute, private router: Router, private locationClassService: LocationClassService) {
+  constructor(private breakpointObserver: BreakpointObserver,
+    private route: ActivatedRoute,
+    private router: Router,
+    private locationClassService: LocationClassService,
+    private equipmentClassService: EquipmentClassService,
+    private pointClassService: PointClassService) {
+      this.services={
+        location:locationClassService,
+        equipment:equipmentClassService,
+        point:pointClassService
+      }
   }
-  classType:string;
+  classType: string;
   nodes: Node[];
   links: Link[];
+  services: {
+    location: LocationClassService ,
+    equipment: EquipmentClassService,
+    point: PointClassService
+  };
 
   ngOnInit() {
     this.route.paramMap.pipe(
@@ -48,16 +65,16 @@ export class BaseComponent {
   }
 
   async postInit() {
-    const classes = await this.locationClassService.findAll().toPromise();
-    this.nodes = classes.map(c =>{
+    const classes = await this.services[this.classType].findAll().toPromise();
+    this.nodes = classes.map(c => {
       return {
-        id:c.id,
+        id: c.id,
         label: c.name
       }
     });
-    this.links = classes.filter(c=>c.parentId!==null).map(c =>{
+    this.links = classes.filter(c => c.parentId !== null).map(c => {
       return {
-        id:`${c.id}-${c.parentId}`,
+        id: `${c.id}-${c.parentId}`,
         target: c.id,
         source: c.parentId
       }
