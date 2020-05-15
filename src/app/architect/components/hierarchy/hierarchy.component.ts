@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Node, Link } from '../../../utils/interfaces/graph.interface';
 import { LocationService } from '../../../location/location.service';
 import { EquipmentService } from '../../../equipment/equipment.service';
-
+import * as stc from 'string-to-color'
 @Component({
   selector: 'app-hierarchy',
   templateUrl: './hierarchy.component.html',
@@ -26,14 +26,16 @@ export class HierarchyComponent implements OnInit {
     this.nodes = locations.map(c => {
       return {
         id: 'location-' + c.id,
-        label: c.name
+        label: c.name,
+        color: stc(c.classId)
       }
     });
     this.nodes = [...this.nodes,
       ...equipments.map(c => {
       return {
         id: 'equipment-' + c.id,
-        label: c.name
+        label: c.name,
+        color: stc(c.classId)
       }
     })]
 
