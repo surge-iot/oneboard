@@ -2,12 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ArchitectRoutingModule } from './architect-routing.module';
-import { GraphComponent } from './components/graph/graph.component';
 import { BlueprintComponent } from './components/blueprint/blueprint.component';
+import { HierarchyComponent } from './components/hierarchy/hierarchy.component';
 
 
 @NgModule({
-  declarations: [GraphComponent, BlueprintComponent],
+  declarations: [BlueprintComponent, HierarchyComponent],
   imports: [
     CommonModule,
     ArchitectRoutingModule
