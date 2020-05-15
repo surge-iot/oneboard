@@ -35,6 +35,7 @@ import { AuthModule } from './auth/auth.module';
 import { ManagerModule } from './manager/manager.module';
 import { LocationModule } from './location/location.module';
 import { ClassBuilderModule } from './class-builder/class-builder.module';
+import { ArchitectModule } from './architect/architect.module';
 
 export function tokenGetter() {
   return localStorage.getItem("access_token");
@@ -52,6 +53,7 @@ export function tokenGetter() {
     ManagerModule,
     LocationModule,
     ClassBuilderModule,
+    ArchitectModule,
     // Core
     AppRoutingModule,
     BrowserModule,
