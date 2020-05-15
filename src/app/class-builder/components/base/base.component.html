@@ -18,7 +18,7 @@
     </mat-toolbar>
     <!-- Add Content Here -->
     <div style="height:100vh">
-      <ngx-graph class="chart-container"  [links]="links" [nodes]="nodes" layout="dagreCluster"
+      <ngx-graph class="chart-container"  [links]="links" [nodes]="nodes" layout="dagreCluster" [zoomLevel]="1.5"
         >
         <ng-template #defsTemplate>
           <svg:marker id="arrow" viewBox="0 -5 10 10" refX="8" refY="0" markerWidth="4" markerHeight="4" orient="auto">
