@@ -16,6 +16,7 @@ import { MatInputModule } from '@angular/material/input';
 import { NgxGraphModule } from '@swimlane/ngx-graph';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UtilsModule } from '../utils/utils.module';
+import { MatCardModule } from '@angular/material/card';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { UtilsModule } from '../utils/utils.module';
     MatBottomSheetModule,
     MatFormFieldModule,
     MatInputModule,
+    MatCardModule,
     NgxGraphModule,
     FormsModule,
     ReactiveFormsModule,

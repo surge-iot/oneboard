@@ -5,8 +5,7 @@
     </mat-toolbar>
     <!-- Add Content Here -->
     <div style="height:100vh">
-      <ngx-graph class="chart-container"  [links]="links" [nodes]="nodes" layout="dagreCluster" [zoomLevel]="1.5"
-        >
+      <ngx-graph class="chart-container" [links]="links" [nodes]="nodes" layout="dagreCluster">
         <ng-template #defsTemplate>
           <svg:marker id="arrow" viewBox="0 -5 10 10" refX="8" refY="0" markerWidth="4" markerHeight="4" orient="auto">
             <svg:path d="M0,-5L10,0L0,5" class="arrow-head" />
@@ -22,9 +21,9 @@
 
         <ng-template #nodeTemplate let-node>
           <svg:g class="node">
-            <svg:rect [attr.width]="node.dimension.width" [attr.height]="node.dimension.height"
-              [attr.fill]="node.color" />
-            <svg:text alignment-baseline="central" [attr.x]="10" [attr.y]="node.dimension.height / 2">
+            <svg:rect [attr.width]="node.dimension.width" [attr.height]="node.dimension.height" [attr.fill]="node.color"
+              [attr.rx]="node.borderRadius" />
+            <svg:text alignment-baseline="central" [attr.x]="10" [attr.y]="node.dimension.height / 2" fill="#ffffff">
               {{node.label}}
             </svg:text>
           </svg:g>
@@ -32,7 +31,8 @@
 
         <ng-template #linkTemplate let-link>
           <svg:g class="edge">
-            <svg:path class="line" stroke-width="3" [attr.stroke]="link.stroke" [attr.stroke-dasharray]="link.strokeDashArray" marker-end="url(#arrow)"></svg:path>
+            <svg:path class="line" stroke-width="3" [attr.stroke]="link.stroke"
+              [attr.stroke-dasharray]="link.strokeDashArray" marker-end="url(#arrow)"></svg:path>
             <svg:text class="edge-label" text-anchor="middle">
               <textPath class="text-path" [attr.href]="'#' + link.id" [style.dominant-baseline]="link.dominantBaseline"
                 startOffset="50%" fill="#ffff">
@@ -46,8 +46,34 @@
 
   </mat-sidenav-content>
 </mat-sidenav-container>
-<div class="create-sub-class-fab-container">
-  <button mat-fab color="primary" aria-label="Create root sub class" >
-    <mat-icon>add</mat-icon>
-  </button>
-</div>
+<mat-card class="legend-container">
+  <mat-card-title>Legend</mat-card-title>
+  <mat-card-content>
+    <svg width=60 height=20>
+      <svg:g>
+        <svg:rect width=60 height=20 fill="#009688" />
+        <svg:text alignment-baseline="central" fill="#ffffff" y="10" x=10 font-size="10">
+          Location
+        </svg:text>
+      </svg:g>
+    </svg>
+    <br>
+    <svg width=60 height=20>
+      <svg:g>
+        <svg:rect width=60 height=20 fill="#2196f3" />
+        <svg:text alignment-baseline="central" fill="#ffffff" y="10" x=10 font-size="10">
+          Equipment
+        </svg:text>
+      </svg:g>
+    </svg>
+    <br>
+    <svg width=60 height=20>
+      <svg:g>
+        <svg:rect width=60 height=20 fill="#e91e63" rx="15" />
+        <svg:text alignment-baseline="central" fill="#ffffff" y="10" x=10 font-size="10">
+          Point
+        </svg:text>
+      </svg:g>
+    </svg>
+  </mat-card-content>
+</mat-card>
