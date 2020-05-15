@@ -3,7 +3,7 @@ import { MatBottomSheetRef } from '@angular/material/bottom-sheet';
 import { MAT_BOTTOM_SHEET_DATA } from '@angular/material/bottom-sheet';
 import { FormBuilder } from '@angular/forms';
 
-import { Node } from '../base/base.component'
+import { Node, Link } from '../../../utils/interfaces/graph.interface';
 import { LocationClassService } from '../../services/location-class.service';
 import { EquipmentClassService } from '../../services/equipment-class.service';
 import { PointClassService } from '../../services/point-class.service';

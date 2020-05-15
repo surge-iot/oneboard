@@ -10,17 +10,8 @@ import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { CreateSubClassComponent } from '../create-sub-class/create-sub-class.component';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../../../utils/components/confirm-dialog/confirm-dialog.component';
+import { Node, Link } from '../../../utils/interfaces/graph.interface';
 
-export interface Node {
-  id: string;
-  label: string;
-}
-
-export interface Link {
-  id: string;
-  source: string;
-  target: string;
-}
 
 @Component({
   selector: 'app-base',

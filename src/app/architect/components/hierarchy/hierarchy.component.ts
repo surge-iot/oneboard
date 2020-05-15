@@ -1,14 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-export interface Node {
-  id: string;
-  label: string;
-}
+import { Node, Link } from '../../../utils/interfaces/graph.interface';
 
-export interface Link {
-  id: string;
-  source: string;
-  target: string;
-}
 @Component({
   selector: 'app-hierarchy',
   templateUrl: './hierarchy.component.html',
