@@ -12,7 +12,8 @@ export interface Location {
   classId: string;
   parentId: number | null;
   meta: {};
-  children: Location[]
+  children: Location[];
+  links: Location[]
 }
 
 @Injectable({

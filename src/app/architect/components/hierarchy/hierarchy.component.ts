@@ -26,12 +26,28 @@ export class HierarchyComponent implements OnInit {
         label: c.name
       }
     });
-    this.links = locations.filter(c => c.parentId !== null).map(c => {
-      return {
-        id: `link-${c.id}-${c.parentId}`,
-        target: 'location-'+c.id,
-        source: 'location-'+c.parentId
-      }
-    });
+
+    let relationships = [];
+    for(let l of locations){
+      relationships.push(...l.children.map(c =>{
+        return {
+          id: `link-${c.id}-${l.id}`,
+          target: 'location-'+c.id,
+          source: 'location-'+l.id,
+          stroke: '#009688'
+        }
+      }));
+
+      relationships.push(...l.links.map(c =>{
+        return {
+          id: `link-${c.id}-${l.id}`,
+          target: 'location-'+c.id,
+          source: 'location-'+l.id,
+          stroke: '#2196f3',
+          strokeDashArray:"10, 10"
+        }
+      }));
+    };
+    this.links = relationships;
   }
 }
