@@ -4,7 +4,7 @@ import { MAT_BOTTOM_SHEET_DATA } from '@angular/material/bottom-sheet';
 import { FormBuilder } from '@angular/forms';
 
 import { Node, Link } from '../../../utils/interfaces/graph.interface';
-import { LocationClassService } from '../../../class-builder/services/location-class.service';
+import { LocationClassService } from '../../../location-class/location-class.service';
 
 @Component({
   selector: 'app-create-location',
@@ -19,14 +19,14 @@ export class CreateLocationComponent implements OnInit {
     public data: { node: Node, service: LocationClassService }) {
     this.parent = data.node;
     this.service = data.service;
-    this.createForm = this.formBuilder.group({
+    this.createLocationForm = this.formBuilder.group({
       name: '',
       parentId:this.parent.id
     });
   }
   parent: Node;
   name: string;
-  createForm;
+  createLocationForm;
   service: LocationClassService;
   ngOnInit(): void {
   }
@@ -41,7 +41,7 @@ export class CreateLocationComponent implements OnInit {
 
     const createdClass = await this.service.create(newClass).toPromise();
     if(createdClass){
-      this.createForm.reset();
+      this.createLocationForm.reset();
       this._bottomSheetRef.dismiss(createdClass);
       console.warn('New class created: ', createdClass);
     }

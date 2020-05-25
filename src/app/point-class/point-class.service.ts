@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { environment } from '../../../environments/environment';
+import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
-import { ResponseService } from '../../utils/services/response.service';
+import { ResponseService } from '../utils/services/response.service';
 import { catchError, retry } from 'rxjs/operators';
 
 

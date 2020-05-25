@@ -4,9 +4,9 @@ import { MAT_BOTTOM_SHEET_DATA } from '@angular/material/bottom-sheet';
 import { FormBuilder } from '@angular/forms';
 
 import { Node, Link } from '../../../utils/interfaces/graph.interface';
-import { LocationClassService } from '../../services/location-class.service';
-import { EquipmentClassService } from '../../services/equipment-class.service';
-import { PointClassService } from '../../services/point-class.service';
+import { LocationClassService } from '../../../location-class/location-class.service';
+import { EquipmentClassService } from '../../../equipment-class/equipment-class.service';
+import { PointClassService } from '../../../point-class/point-class.service';
 @Component({
   selector: 'app-create-sub-class',
   templateUrl: './create-sub-class.component.html',
