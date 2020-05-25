@@ -54,5 +54,17 @@ export class LocationService {
       catchError(this.responseService.handleError)
     );
   }
+  // Create a new locationClass
+  create(props: Partial<Location>): Observable<Location> {
+    return this.http.post<Location>(this.locationUrl, props).pipe(
+      catchError(this.responseService.handleError)
+    )
+  }
+  // Delete a locationClass by id
+  delete(id: number): Observable<Location> {
+    return this.http.delete<Location>(this.locationUrl + id).pipe(
+      catchError(this.responseService.handleError)
+    );
+  }
 
 }

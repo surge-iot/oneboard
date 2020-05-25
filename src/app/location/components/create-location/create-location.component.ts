@@ -4,7 +4,8 @@ import { MAT_BOTTOM_SHEET_DATA } from '@angular/material/bottom-sheet';
 import { FormBuilder } from '@angular/forms';
 
 import { Node, Link } from '../../../utils/interfaces/graph.interface';
-import { LocationClassService } from '../../../location-class/location-class.service';
+import { LocationClassService, LocationClass } from '../../../location-class/location-class.service';
+import { LocationService } from '../../location.service';
 
 @Component({
   selector: 'app-create-location',
@@ -15,19 +16,14 @@ export class CreateLocationComponent implements OnInit {
 
   constructor(private _bottomSheetRef: MatBottomSheetRef<CreateLocationComponent>,
     private formBuilder: FormBuilder,
-    @Inject(MAT_BOTTOM_SHEET_DATA)
-    public data: { node: Node, service: LocationClassService }) {
-    this.parent = data.node;
-    this.service = data.service;
+    private locationService: LocationService,
+    ) {
     this.createLocationForm = this.formBuilder.group({
       name: '',
-      parentId:this.parent.id
+      classId: ''
     });
   }
-  parent: Node;
-  name: string;
   createLocationForm;
-  service: LocationClassService;
   ngOnInit(): void {
   }
   openLink(event: MouseEvent): void {
@@ -35,15 +31,13 @@ export class CreateLocationComponent implements OnInit {
     event.preventDefault();
   }
 
-  async onSubmit(newClass) {
-    // Process checkout data here
-    Object.keys(newClass).forEach((key) => (newClass[key] == null) && delete newClass[key]);
+  async onSubmit(newLocation) {
 
-    const createdClass = await this.service.create(newClass).toPromise();
-    if(createdClass){
+    const createdLocation = await this.locationService.create(newLocation).toPromise();
+    if(createdLocation){
       this.createLocationForm.reset();
-      this._bottomSheetRef.dismiss(createdClass);
-      console.warn('New class created: ', createdClass);
+      this._bottomSheetRef.dismiss(createdLocation);
+      console.warn('New class created: ', createdLocation);
     }
   }
 }

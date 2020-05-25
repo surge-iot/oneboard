@@ -3,6 +3,8 @@ import { Node, Link } from '../../../utils/interfaces/graph.interface';
 import { LocationService } from '../../../location/location.service';
 import { EquipmentService } from '../../../equipment/equipment.service';
 import { PointService } from '../../../point/point.service';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
+import { CreateLocationComponent } from 'src/app/location/components/create-location/create-location.component';
 @Component({
   selector: 'app-hierarchy',
   templateUrl: './hierarchy.component.html',
@@ -12,6 +14,7 @@ export class HierarchyComponent implements OnInit {
 
   constructor(private locationService: LocationService,
     private equipmentService: EquipmentService,
+    private _bottomSheet: MatBottomSheet,
     private pointService: PointService) { }
 
   nodes: Node[];
@@ -124,5 +127,15 @@ export class HierarchyComponent implements OnInit {
 
     };
     this.links = relationships;
+  }
+
+  async createLocation() {
+    const bottomSheetRef = this._bottomSheet.open(CreateLocationComponent);
+    const createdLocation = await bottomSheetRef.afterDismissed().toPromise();
+    if (!createdLocation) {
+      return;
+    }
+    await this.postInit();
+
   }
 }
