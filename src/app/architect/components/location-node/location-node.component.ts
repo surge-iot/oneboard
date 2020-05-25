@@ -1,5 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Node, Link } from '../../../utils/interfaces/graph.interface';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from 'src/app/utils/components/confirm-dialog/confirm-dialog.component';
+import { LocationService } from 'src/app/location/location.service';
 
 @Component({
   selector: '[app-location-node]',
@@ -8,10 +11,29 @@ import { Node, Link } from '../../../utils/interfaces/graph.interface';
 })
 export class LocationNodeComponent implements OnInit {
   @Input() node: Node;
-  constructor() { }
+  @Output() updated = new EventEmitter();
+  constructor(
+    public dialog: MatDialog,
+    private locationService: LocationService
+  ) { }
 
   ngOnInit(): void {
-    console.log(this.node)
   }
 
+  async delete(node:Node): Promise<void> {
+    console.log('Delete ', node.modelId);
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      width: '250px',
+      data: "Are you sure you want to delete this?"
+    });
+
+    const confirmed = await dialogRef.afterClosed().toPromise();
+    if(!confirmed){
+      return;
+    }
+    const deleted = await this.locationService.delete(+node.modelId).toPromise();
+    if(deleted){
+      this.updated.emit();
+    }
+  }
 }

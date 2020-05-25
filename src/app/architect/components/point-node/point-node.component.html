@@ -1,4 +1,6 @@
-<svg:rect [attr.width]="node.dimension.width" [attr.height]="node.dimension.height" rx="15" />
-<svg:text alignment-baseline="central" [attr.x]="10" [attr.y]="node.dimension.height / 2" >
-  {{node.label}}
-</svg:text>
+<svg:g class="node">
+  <svg:rect [attr.width]="node.dimension.width" [attr.height]="node.dimension.height" rx="15" />
+  <svg:text alignment-baseline="central" [attr.x]="10" [attr.y]="node.dimension.height / 2">
+    {{node.label}}
+  </svg:text>
+</svg:g>

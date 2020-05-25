@@ -4,3 +4,13 @@ rect{
 text{
   fill:#ffffff;
 }
+.delete-btn circle{
+  fill: #ef5350;
+}
+.node .delete-btn, .node .add-link-btn{
+  display:none;
+}
+
+.node:hover .delete-btn, .node:hover .add-link-btn{
+  display:block;
+}

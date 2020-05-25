@@ -1,6 +1,7 @@
 export interface Node {
   id: string;
   label: string;
+  modelId?:number;
   dimension?: {
     width: number;
     height: number;

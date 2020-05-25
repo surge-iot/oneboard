@@ -31,8 +31,8 @@ export class HierarchyComponent implements OnInit {
     this.nodes = locations.map(c => {
       return {
         id: 'location-' + c.id,
+        modelId:c.id,
         label: c.name,
-        color: '#009688',
         type: 'location'
       }
     });
@@ -40,8 +40,8 @@ export class HierarchyComponent implements OnInit {
     ...equipments.map(c => {
       return {
         id: 'equipment-' + c.id,
+        modelId:c.id,
         label: c.name,
-        color: '#2196f3',
         type:'equipment'
       }
     })];
@@ -50,9 +50,8 @@ export class HierarchyComponent implements OnInit {
     ...points.map(c => {
       return {
         id: 'point-' + c.id,
+        modelId:c.id,
         label: c.classId,
-        color: '#e91e63',
-        borderRadius: '15',
         type: 'point'
       }
     })]
@@ -140,5 +139,9 @@ export class HierarchyComponent implements OnInit {
     }
     await this.postInit();
 
+  }
+
+  onUpdated(ev) {
+    this.postInit();
   }
 }
