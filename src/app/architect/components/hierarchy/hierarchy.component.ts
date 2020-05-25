@@ -33,7 +33,7 @@ export class HierarchyComponent implements OnInit {
       }
     });
     this.nodes = [...this.nodes,
-      ...equipments.map(c => {
+    ...equipments.map(c => {
       return {
         id: 'equipment-' + c.id,
         label: c.name,
@@ -42,12 +42,12 @@ export class HierarchyComponent implements OnInit {
     })];
     // Points
     this.nodes = [...this.nodes,
-      ...points.map(c => {
+    ...points.map(c => {
       return {
         id: 'point-' + c.id,
         label: c.classId,
         color: '#e91e63',
-        borderRadius:'15'
+        borderRadius: '15'
       }
     })]
 
@@ -76,7 +76,7 @@ export class HierarchyComponent implements OnInit {
 
     };
     // Equipment locations
-    relationships.push(...equipments.filter(e=>e.locationId!==null).map(e => {
+    relationships.push(...equipments.filter(e => e.locationId !== null).map(e => {
       return {
         id: `link-l${e.locationId}-e${e.id}`,
         source: 'location-' + e.locationId,
@@ -86,10 +86,25 @@ export class HierarchyComponent implements OnInit {
     }));
     // points
     for (let p of points) {
+      // is located in
+      relationships.push({
+        id: `link-l${p.locationId}-p${p.id}`,
+        source: 'location-' + p.locationId,
+        target: 'point-' + p.id,
+        stroke: '#e91e63'
+      });
+      if (p.equipmentId) {
+        relationships.push({
+          id: `link-e${p.equipmentId}-p${p.id}`,
+          source: 'equipment-' + p.equipmentId,
+          target: 'point-' + p.id,
+          stroke: '#e91e63'
+        });
+      }
       // point of locations
       relationships.push(...p.pointOfLocations.map(l => {
         return {
-          id: `link-l${l.id}-p${p.id}`,
+          id: `link-pol-l${l.id}-p${p.id}`,
           source: 'location-' + l.id,
           target: 'point-' + p.id,
           stroke: '#e91e63',
@@ -99,7 +114,7 @@ export class HierarchyComponent implements OnInit {
       // point of equipments
       relationships.push(...p.pointOfEquipments.map(e => {
         return {
-          id: `link-l${e.id}-p${p.id}`,
+          id: `link-poe-l${e.id}-p${p.id}`,
           source: 'equipment-' + e.id,
           target: 'point-' + p.id,
           stroke: '#e91e63',

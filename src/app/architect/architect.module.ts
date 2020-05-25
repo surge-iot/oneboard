@@ -17,6 +17,7 @@ import { NgxGraphModule } from '@swimlane/ngx-graph';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UtilsModule } from '../utils/utils.module';
 import { MatCardModule } from '@angular/material/card';
+import { CreateLocationComponent } from '../location/components/create-location/create-location.component';
 
 
 @NgModule({
@@ -38,6 +39,12 @@ import { MatCardModule } from '@angular/material/card';
     FormsModule,
     ReactiveFormsModule,
     UtilsModule
-  ]
+  ],
+  entryComponents: [
+    HierarchyComponent,
+    CreateLocationComponent,
+    MatFormFieldModule,
+    MatInputModule,
+  ],
 })
 export class ArchitectModule { }

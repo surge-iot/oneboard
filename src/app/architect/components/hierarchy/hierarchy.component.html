@@ -5,7 +5,7 @@
     </mat-toolbar>
     <!-- Add Content Here -->
     <div style="height:100vh">
-      <ngx-graph class="chart-container" [links]="links" [nodes]="nodes" layout="dagreCluster">
+      <ngx-graph class="chart-container" [links]="links" [nodes]="nodes" layout="dagre">
         <ng-template #defsTemplate>
           <svg:marker id="arrow" viewBox="0 -5 10 10" refX="8" refY="0" markerWidth="4" markerHeight="4" orient="auto">
             <svg:path d="M0,-5L10,0L0,5" class="arrow-head" />
@@ -77,3 +77,8 @@
     </svg>
   </mat-card-content>
 </mat-card>
+<div class="create-location-fab-container">
+  <button mat-fab color="primary" aria-label="Create new location" >
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
