@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Node, Link } from '../../../utils/interfaces/graph.interface';
 import { LocationService } from '../../../location/location.service';
 import { EquipmentService } from '../../../equipment/equipment.service';
-import * as stc from 'string-to-color'
 import { PointService } from '../../../point/point.service';
 @Component({
   selector: 'app-hierarchy',
@@ -62,16 +61,6 @@ export class HierarchyComponent implements OnInit {
           stroke: '#009688'
         }
       }));
-
-      relationships.push(...l.links.map(c => {
-        return {
-          id: `link-l${l.id}-l${c.id}`,
-          source: 'location-' + l.id,
-          target: 'location-' + c.id,
-          stroke: '#009688',
-          strokeDashArray: "10, 10"
-        }
-      }));
     };
 
     for (let e of equipments) {
@@ -82,16 +71,6 @@ export class HierarchyComponent implements OnInit {
           source: 'equipment-' + e.id,
           target: 'equipment-' + c.id,
           stroke: '#2196f3'
-        }
-      }));
-      // Equipment links
-      relationships.push(...e.links.map(c => {
-        return {
-          id: `link-e${e.id}-e${c.id}`,
-          source: 'equipment-' + e.id,
-          target: 'equipment-' + c.id,
-          stroke: '#2196f3',
-          strokeDashArray: "10, 10"
         }
       }));
 
