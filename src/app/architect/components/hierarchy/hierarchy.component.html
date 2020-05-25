@@ -20,13 +20,9 @@
         </ng-template>
 
         <ng-template #nodeTemplate let-node>
-          <svg:g class="node">
-            <svg:rect [attr.width]="node.dimension.width" [attr.height]="node.dimension.height" [attr.fill]="node.color"
-              [attr.rx]="node.borderRadius" />
-            <svg:text alignment-baseline="central" [attr.x]="10" [attr.y]="node.dimension.height / 2" fill="#ffffff">
-              {{node.label}}
-            </svg:text>
-          </svg:g>
+          <svg:g class="node" *ngIf="node.type==='location'" [node]="node" app-location-node></svg:g>
+          <svg:g class="node" *ngIf="node.type==='equipment'" [node]="node" app-equipment-node></svg:g>
+          <svg:g class="node" *ngIf="node.type==='point'" [node]="node" app-point-node></svg:g>
         </ng-template>
 
         <ng-template #linkTemplate let-link>

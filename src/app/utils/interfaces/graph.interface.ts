@@ -1,6 +1,10 @@
 export interface Node {
   id: string;
   label: string;
+  dimension?: {
+    width: number;
+    height: number;
+  }
 }
 
 export interface Link {

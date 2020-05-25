@@ -18,10 +18,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UtilsModule } from '../utils/utils.module';
 import { MatCardModule } from '@angular/material/card';
 import { CreateLocationComponent } from '../location/components/create-location/create-location.component';
+import { LocationNodeComponent } from './components/location-node/location-node.component';
+import { EquipmentNodeComponent } from './components/equipment-node/equipment-node.component';
+import { PointNodeComponent } from './components/point-node/point-node.component';
 
 
 @NgModule({
-  declarations: [BlueprintComponent, HierarchyComponent],
+  declarations: [BlueprintComponent, HierarchyComponent, LocationNodeComponent, EquipmentNodeComponent, PointNodeComponent],
   imports: [
     CommonModule,
     ArchitectRoutingModule,

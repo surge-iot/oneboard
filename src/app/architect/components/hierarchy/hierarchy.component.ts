@@ -32,7 +32,8 @@ export class HierarchyComponent implements OnInit {
       return {
         id: 'location-' + c.id,
         label: c.name,
-        color: '#009688'
+        color: '#009688',
+        type: 'location'
       }
     });
     this.nodes = [...this.nodes,
@@ -40,7 +41,8 @@ export class HierarchyComponent implements OnInit {
       return {
         id: 'equipment-' + c.id,
         label: c.name,
-        color: '#2196f3'
+        color: '#2196f3',
+        type:'equipment'
       }
     })];
     // Points
@@ -50,7 +52,8 @@ export class HierarchyComponent implements OnInit {
         id: 'point-' + c.id,
         label: c.classId,
         color: '#e91e63',
-        borderRadius: '15'
+        borderRadius: '15',
+        type: 'point'
       }
     })]
 
