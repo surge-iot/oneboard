@@ -5,7 +5,8 @@
     </mat-toolbar>
     <!-- Add Content Here -->
     <div style="height:100vh">
-      <ngx-graph class="chart-container" [links]="links" [nodes]="nodes" layout="dagre" [draggingEnabled]="false">
+      <ngx-graph class="chart-container connection-mode" [links]="links" [nodes]="nodes" layout="dagre"
+        [draggingEnabled]="false">
         <ng-template #defsTemplate>
           <svg:marker id="arrow" viewBox="0 -5 10 10" refX="8" refY="0" markerWidth="4" markerHeight="4" orient="auto">
             <svg:path d="M0,-5L10,0L0,5" class="arrow-head" />
@@ -20,7 +21,7 @@
         </ng-template>
 
         <ng-template #nodeTemplate let-node>
-          <svg:g *ngIf="node.type==='location'" [node]="node" app-location-node (updated)="onUpdated($event)"></svg:g>
+          <svg:g *ngIf="node.type==='location'" [node]="node" app-location-node (updated)="onUpdated($event)" (onEntryConnectorClick)="entryConnectorClick(node)" (onExitConnectorClick)="exitConnectorClick(node)" [mode]="mode"></svg:g>
           <svg:g *ngIf="node.type==='equipment'" [node]="node" app-equipment-node></svg:g>
           <svg:g *ngIf="node.type==='point'" [node]="node" app-point-node></svg:g>
         </ng-template>

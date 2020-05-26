@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { Node, Link } from '../../../utils/interfaces/graph.interface';
 import { LocationService } from '../../../location/location.service';
 import { EquipmentService } from '../../../equipment/equipment.service';
@@ -19,9 +19,16 @@ export class HierarchyComponent implements OnInit {
 
   nodes: Node[];
   links: Link[];
+  mode: string;
+  linkNodes: {
+    source: Node | null;
+    target: Node | null;
+  }
 
   ngOnInit(): void {
     this.postInit();
+    this.linkNodes = { source: null, target: null }
+    this.mode = '';
   }
 
   async postInit() {
@@ -31,7 +38,7 @@ export class HierarchyComponent implements OnInit {
     this.nodes = locations.map(c => {
       return {
         id: 'location-' + c.id,
-        modelId:c.id,
+        modelId: c.id,
         label: c.name,
         type: 'location'
       }
@@ -40,9 +47,9 @@ export class HierarchyComponent implements OnInit {
     ...equipments.map(c => {
       return {
         id: 'equipment-' + c.id,
-        modelId:c.id,
+        modelId: c.id,
         label: c.name,
-        type:'equipment'
+        type: 'equipment'
       }
     })];
     // Points
@@ -50,7 +57,7 @@ export class HierarchyComponent implements OnInit {
     ...points.map(c => {
       return {
         id: 'point-' + c.id,
-        modelId:c.id,
+        modelId: c.id,
         label: c.classId,
         type: 'point'
       }
@@ -143,5 +150,49 @@ export class HierarchyComponent implements OnInit {
 
   onUpdated(ev) {
     this.postInit();
+  }
+  resetMode(){
+    this.linkNodes = { source: null, target: null };
+    this.mode = '';
+  }
+  @HostListener('document:keydown.escape', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) {
+    this.resetMode();
+  }
+  exitConnectorClick(node: Node) {
+    console.log(node);
+    switch (this.mode) {
+      case '':// starting an add-link operation
+        this.mode = "add-link-mode";
+        this.linkNodes.source = node;
+        break;
+      case 'remove-link-mode':// completing a remove-link operation
+        this.linkNodes.target = node;
+        this.postInit();
+        this.resetMode();
+        // TODO: unlink the nodes based on type
+        break;
+      case 'add-link': // invalid operation
+        break;
+    }
+
+  }
+  entryConnectorClick(node: Node) {
+    console.log(node);
+    switch (this.mode) {
+      case '':// starting a remove-link operation
+        this.mode = "remove-link-mode";
+        this.linkNodes.source = node;
+        break;
+      case 'add-link-mode':// completing an add-link operation
+        this.linkNodes.target = node;
+        // TODO: link the nodes based on type
+        this.postInit();
+        this.resetMode();
+        break;
+      case 'remove-link': // invalid operation
+        break;
+    }
+
   }
 }

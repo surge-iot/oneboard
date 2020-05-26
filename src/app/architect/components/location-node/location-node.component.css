@@ -5,7 +5,7 @@ text{
   fill:#ffffff;
 }
 .delete-btn circle{
-  fill: #ef5350;
+  fill: #333;
 }
 .delete-btn {
   cursor: pointer;
@@ -22,4 +22,18 @@ text{
 
 .node:hover .delete-btn{
   display:block;
+}
+
+.add-link-mode .link-btn.entry circle{
+  fill:yellow;
+}
+.add-link-mode .link-btn.exit, .add-link-mode.node:hover .delete-btn{
+  display:none;
+}
+
+.remove-link-mode .link-btn.exit circle{
+  fill:yellow;
+}
+.remove-link-mode .link-btn.entry, .remove-link-mode.node:hover .delete-btn{
+  display:none;
 }
