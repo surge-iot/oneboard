@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Node, Link } from '../../../utils/interfaces/graph.interface';
 
 @Component({
@@ -8,7 +8,10 @@ import { Node, Link } from '../../../utils/interfaces/graph.interface';
 })
 export class PointNodeComponent implements OnInit {
   @Input() node: Node;
+  @Input() mode: string;
 
+  @Output() onEntryConnectorClick = new EventEmitter<Node>();
+  @Output() onExitConnectorClick = new EventEmitter<Node>();
   constructor() { }
 
   ngOnInit(): void {

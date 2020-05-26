@@ -15,7 +15,6 @@ export class LocationNodeComponent implements OnInit {
   @Output() updated = new EventEmitter();
   @Output() onEntryConnectorClick = new EventEmitter<Node>();
   @Output() onExitConnectorClick = new EventEmitter<Node>();
-  selectedElement;
   constructor(
     public dialog: MatDialog,
     private locationService: LocationService

@@ -1,9 +1,10 @@
-<svg:g class="node">
+<svg:g class="node" [ngClass]="mode">
   <svg:rect [attr.width]="node.dimension.width" [attr.height]="node.dimension.height" rx="15" />
   <svg:text alignment-baseline="central" [attr.x]="10" [attr.y]="node.dimension.height / 2">
     {{node.label}}
   </svg:text>
-  <svg:g class="link-btn end" >
+
+  <svg:g class="link-btn entry" (click)="onEntryConnectorClick.emit(node)">
     <svg:circle r="6" [attr.cx]="0"  [attr.cy]="node.dimension.height/2"/>
   </svg:g>
 </svg:g>

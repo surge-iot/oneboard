@@ -11,3 +11,14 @@ text{
   fill:#aaa;
   cursor: pointer;
 }
+
+.add-link-mode .link-btn.entry circle{
+  fill:yellow;
+}
+.add-link-mode.node:hover .delete-btn{
+  display:none;
+}
+
+.remove-link-mode .link-btn.entry, .remove-link-mode.node:hover .delete-btn{
+  display:none;
+}
