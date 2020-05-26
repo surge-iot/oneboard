@@ -4,3 +4,10 @@ rect{
 text{
   fill:#ffffff;
 }
+
+.link-btn circle{
+  stroke: #333;
+  stroke-width:2px;
+  fill:#aaa;
+  cursor: pointer;
+}

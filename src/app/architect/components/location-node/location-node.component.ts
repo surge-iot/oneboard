@@ -12,6 +12,7 @@ import { LocationService } from 'src/app/location/location.service';
 export class LocationNodeComponent implements OnInit {
   @Input() node: Node;
   @Output() updated = new EventEmitter();
+  selectedElement;
   constructor(
     public dialog: MatDialog,
     private locationService: LocationService
@@ -36,4 +37,5 @@ export class LocationNodeComponent implements OnInit {
       this.updated.emit();
     }
   }
+
 }

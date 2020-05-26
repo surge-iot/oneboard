@@ -7,10 +7,19 @@ text{
 .delete-btn circle{
   fill: #ef5350;
 }
-.node .delete-btn, .node .add-link-btn{
+.delete-btn {
+  cursor: pointer;
+}
+.link-btn circle{
+  stroke: #333;
+  stroke-width:2px;
+  fill:#aaa;
+  cursor: pointer;
+}
+.node .delete-btn{
   display:none;
 }
 
-.node:hover .delete-btn, .node:hover .add-link-btn{
+.node:hover .delete-btn{
   display:block;
 }

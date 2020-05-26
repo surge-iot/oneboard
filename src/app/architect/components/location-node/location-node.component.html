@@ -10,4 +10,12 @@
       x
     </svg:text>
   </svg:g>
+
+  <svg:g class="link-btn start" >
+    <svg:circle r="6" [attr.cx]="node.dimension.width"  [attr.cy]="node.dimension.height/2"/>
+  </svg:g>
+
+  <svg:g class="link-btn end" >
+    <svg:circle r="6" [attr.cx]="0"  [attr.cy]="node.dimension.height/2"/>
+  </svg:g>
 </svg:g>
