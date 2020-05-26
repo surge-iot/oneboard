@@ -159,7 +159,7 @@ export class HierarchyComponent implements OnInit {
   handleKeyboardEvent(event: KeyboardEvent) {
     this.resetMode();
   }
-  exitConnectorClick(node: Node) {
+  async exitConnectorClick(node: Node) {
     console.log(node);
     switch (this.mode) {
       case '':// starting an add-link operation
@@ -168,7 +168,7 @@ export class HierarchyComponent implements OnInit {
         break;
       case 'remove-link-mode':// completing a remove-link operation
         this.linkNodes.target = node;
-        this.postInit();
+        await this.removeLink(this.linkNodes.target, this.linkNodes.source);
         this.resetMode();
         // TODO: unlink the nodes based on type
         break;
@@ -177,7 +177,7 @@ export class HierarchyComponent implements OnInit {
     }
 
   }
-  entryConnectorClick(node: Node) {
+  async entryConnectorClick(node: Node) {
     console.log(node);
     switch (this.mode) {
       case '':// starting a remove-link operation
@@ -187,12 +187,48 @@ export class HierarchyComponent implements OnInit {
       case 'add-link-mode':// completing an add-link operation
         this.linkNodes.target = node;
         // TODO: link the nodes based on type
-        this.postInit();
+        await this.addLink(this.linkNodes.source, this.linkNodes.target);
         this.resetMode();
         break;
       case 'remove-link': // invalid operation
         break;
     }
+  }
+  async addLink(source:Node, target:Node){
+    if(source.id===target.id){
+      return;
+    }
+    if(source.type === 'location' && target.type === 'location'){
+      await this.locationService.addChild(source.modelId, target.modelId).toPromise();
+    }
+    else if(source.type === 'location' && target.type === 'point'){
+      await this.pointService.addPointOfLocation(target.modelId, source.modelId).toPromise();
+    }
+    else if(source.type === 'equipment' && target.type === 'equipment'){
+      await this.equipmentService.addChild(source.modelId, target.modelId).toPromise();
+    }
+    else if(source.type === 'equipment' && target.type === 'point'){
+      await this.pointService.addPointOfEquipment(target.modelId, source.modelId).toPromise();
+    }
+    this.postInit();
+  }
 
+  async removeLink(source:Node, target:Node){
+    if(source.id===target.id){
+      return;
+    }
+    if(source.type === 'location' && target.type === 'location'){
+      await this.locationService.removeChild(source.modelId, target.modelId).toPromise();
+    }
+    else if(source.type === 'location' && target.type === 'point'){
+      await this.pointService.removePointOfLocation(target.modelId, source.modelId).toPromise();
+    }
+    else if(source.type === 'equipment' && target.type === 'equipment'){
+      await this.equipmentService.removeChild(source.modelId, target.modelId).toPromise();
+    }
+    else if(source.type === 'equipment' && target.type === 'point'){
+      await this.pointService.removePointOfEquipment(target.modelId, source.modelId).toPromise();
+    }
+    this.postInit();
   }
 }
