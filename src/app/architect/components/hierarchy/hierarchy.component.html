@@ -22,8 +22,8 @@
 
         <ng-template #nodeTemplate let-node>
           <svg:g *ngIf="node.type==='location'" [node]="node" app-location-node (updated)="onUpdated($event)" (onEntryConnectorClick)="entryConnectorClick(node)" (onExitConnectorClick)="exitConnectorClick(node)" [mode]="mode"></svg:g>
-          <svg:g *ngIf="node.type==='equipment'" [node]="node" app-equipment-node (onEntryConnectorClick)="entryConnectorClick(node)" (onExitConnectorClick)="exitConnectorClick(node)" [mode]="mode"></svg:g>
-          <svg:g *ngIf="node.type==='point'" [node]="node" app-point-node (onEntryConnectorClick)="entryConnectorClick(node)" (onExitConnectorClick)="exitConnectorClick(node)" [mode]="mode"></svg:g>
+          <svg:g *ngIf="node.type==='equipment'" [node]="node" app-equipment-node (updated)="onUpdated($event)" (onEntryConnectorClick)="entryConnectorClick(node)" (onExitConnectorClick)="exitConnectorClick(node)" [mode]="mode"></svg:g>
+          <svg:g *ngIf="node.type==='point'" [node]="node" app-point-node (updated)="onUpdated($event)" (onEntryConnectorClick)="entryConnectorClick(node)" (onExitConnectorClick)="exitConnectorClick(node)" [mode]="mode"></svg:g>
         </ng-template>
 
         <ng-template #linkTemplate let-link>

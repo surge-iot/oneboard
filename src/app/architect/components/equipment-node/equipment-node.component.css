@@ -11,6 +11,19 @@ text{
   fill:#aaa;
   cursor: pointer;
 }
+.delete-btn circle{
+  fill: #333;
+}
+.delete-btn {
+  cursor: pointer;
+}
+.node .delete-btn{
+  display:none;
+}
+
+.node:hover .delete-btn{
+  display:block;
+}
 
 .add-link-mode .link-btn.entry circle{
   fill:yellow;

@@ -5,6 +5,7 @@ import { EquipmentService } from '../../../equipment/equipment.service';
 import { PointService } from '../../../point/point.service';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { CreateLocationComponent } from 'src/app/location/components/create-location/create-location.component';
+import { ResponseService } from 'src/app/utils/services/response.service';
 @Component({
   selector: 'app-hierarchy',
   templateUrl: './hierarchy.component.html',
@@ -12,10 +13,13 @@ import { CreateLocationComponent } from 'src/app/location/components/create-loca
 })
 export class HierarchyComponent implements OnInit {
 
-  constructor(private locationService: LocationService,
+  constructor(
+    private locationService: LocationService,
     private equipmentService: EquipmentService,
     private _bottomSheet: MatBottomSheet,
-    private pointService: PointService) { }
+    private pointService: PointService,
+    private responseService: ResponseService
+  ) { }
 
   nodes: Node[];
   links: Link[];
@@ -99,12 +103,14 @@ export class HierarchyComponent implements OnInit {
     // points
     for (let p of points) {
       // is located in
-      relationships.push({
-        id: `link-l${p.locationId}-p${p.id}`,
-        source: 'location-' + p.locationId,
-        target: 'point-' + p.id,
-        stroke: '#e91e63'
-      });
+      if (!p.equipmentId) {
+        relationships.push({
+          id: `link-l${p.locationId}-p${p.id}`,
+          source: 'location-' + p.locationId,
+          target: 'point-' + p.id,
+          stroke: '#e91e63'
+        });
+      }
       if (p.equipmentId) {
         relationships.push({
           id: `link-e${p.equipmentId}-p${p.id}`,
@@ -151,7 +157,7 @@ export class HierarchyComponent implements OnInit {
   onUpdated(ev) {
     this.postInit();
   }
-  resetMode(){
+  resetMode() {
     this.linkNodes = { source: null, target: null };
     this.mode = '';
   }
@@ -194,40 +200,50 @@ export class HierarchyComponent implements OnInit {
         break;
     }
   }
-  async addLink(source:Node, target:Node){
-    if(source.id===target.id){
+  async addLink(source: Node, target: Node) {
+    if (source.id === target.id) {
+      this.responseService.openSnackBar("Invalid node combination")
       return;
     }
-    if(source.type === 'location' && target.type === 'location'){
+    if (source.type === 'location' && target.type === 'location') {
       await this.locationService.addChild(source.modelId, target.modelId).toPromise();
     }
-    else if(source.type === 'location' && target.type === 'point'){
+    else if (source.type === 'location' && target.type === 'point') {
       await this.pointService.addPointOfLocation(target.modelId, source.modelId).toPromise();
     }
-    else if(source.type === 'equipment' && target.type === 'equipment'){
+    else if (source.type === 'equipment' && target.type === 'equipment') {
       await this.equipmentService.addChild(source.modelId, target.modelId).toPromise();
     }
-    else if(source.type === 'equipment' && target.type === 'point'){
+    else if (source.type === 'equipment' && target.type === 'point') {
       await this.pointService.addPointOfEquipment(target.modelId, source.modelId).toPromise();
+    }
+    else{
+      this.responseService.openSnackBar("Invalid node combination")
+
     }
     this.postInit();
   }
 
-  async removeLink(source:Node, target:Node){
-    if(source.id===target.id){
+  async removeLink(source: Node, target: Node) {
+    if (source.id === target.id) {
+      this.responseService.openSnackBar("Invalid node combination")
       return;
     }
-    if(source.type === 'location' && target.type === 'location'){
+    if (source.type === 'location' && target.type === 'location') {
       await this.locationService.removeChild(source.modelId, target.modelId).toPromise();
     }
-    else if(source.type === 'location' && target.type === 'point'){
+    else if (source.type === 'location' && target.type === 'point') {
       await this.pointService.removePointOfLocation(target.modelId, source.modelId).toPromise();
     }
-    else if(source.type === 'equipment' && target.type === 'equipment'){
+    else if (source.type === 'equipment' && target.type === 'equipment') {
       await this.equipmentService.removeChild(source.modelId, target.modelId).toPromise();
     }
-    else if(source.type === 'equipment' && target.type === 'point'){
+    else if (source.type === 'equipment' && target.type === 'point') {
       await this.pointService.removePointOfEquipment(target.modelId, source.modelId).toPromise();
+    }
+    else{
+      this.responseService.openSnackBar("Invalid node combination")
+
     }
     this.postInit();
   }
