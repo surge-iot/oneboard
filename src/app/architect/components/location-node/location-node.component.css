@@ -1,39 +1,3 @@
 rect{
   fill: #009688;
 }
-text{
-  fill:#ffffff;
-}
-.delete-btn circle{
-  fill: #333;
-}
-.delete-btn {
-  cursor: pointer;
-}
-.link-btn circle{
-  stroke: #333;
-  stroke-width:2px;
-  fill:#aaa;
-  cursor: pointer;
-}
-.node .delete-btn{
-  display:none;
-}
-
-.node:hover .delete-btn{
-  display:block;
-}
-
-.add-link-mode .link-btn.entry circle{
-  fill:yellow;
-}
-.add-link-mode .link-btn.exit, .add-link-mode.node:hover .delete-btn{
-  display:none;
-}
-
-.remove-link-mode .link-btn.exit circle{
-  fill:yellow;
-}
-.remove-link-mode .link-btn.entry, .remove-link-mode.node:hover .delete-btn{
-  display:none;
-}

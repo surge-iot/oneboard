@@ -7,7 +7,7 @@ import { ConfirmDialogComponent } from 'src/app/utils/components/confirm-dialog/
 @Component({
   selector: '[app-point-node]',
   templateUrl: './point-node.component.html',
-  styleUrls: ['./point-node.component.css']
+  styleUrls: ['./point-node.component.css', '../hierarchy/hierarchy.component.css']
 })
 export class PointNodeComponent implements OnInit {
   @Input() node: Node;

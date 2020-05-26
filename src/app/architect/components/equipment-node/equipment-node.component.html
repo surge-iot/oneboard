@@ -1,4 +1,26 @@
 <svg:g class="node" [ngClass]="mode">
+  <svg:g class="control-wheel">
+
+    <svg:circle class="control-wheel-circle" [attr.cx]="node.dimension.width/2" [attr.cy]="node.dimension.height/2"
+      r="30" />
+
+    <svg:g class="delete-btn" (click)="delete(node)">
+      <svg:circle r="10" [attr.cx]="node.dimension.width/2" [attr.cy]="node.dimension.height+20" />
+      <svg:text alignment-baseline="central" text-anchor="middle" [attr.x]="node.dimension.width/2"
+        [attr.y]="node.dimension.height+20" fill="#ffffff" stroke="transparent">
+        x
+      </svg:text>
+    </svg:g>
+
+    <svg:g class="add-point-btn" (click)="delete(node)">
+      <svg:circle r="10" [attr.cx]="node.dimension.width/2" [attr.cy]="-15" />
+      <svg:text alignment-baseline="central" text-anchor="middle" [attr.x]="node.dimension.width/2"
+        [attr.y]="-15" fill="#ffffff" stroke="transparent">
+        +
+      </svg:text>
+    </svg:g>
+
+  </svg:g>
   <svg:rect [attr.width]="node.dimension.width" [attr.height]="node.dimension.height" />
   <svg:text alignment-baseline="central" [attr.x]="10" [attr.y]="node.dimension.height / 2">
     {{node.label}}
@@ -10,10 +32,5 @@
   <svg:g class="link-btn entry" (click)="onEntryConnectorClick.emit(node)">
     <svg:circle r="6" [attr.cx]="0"  [attr.cy]="node.dimension.height/2"/>
   </svg:g>
-  <svg:g class="delete-btn" (click)="delete(node)">
-    <svg:circle r="10" [attr.cx]="node.dimension.width" />
-    <svg:text alignment-baseline="central" text-anchor="middle" [attr.x]="node.dimension.width" fill="#ffffff">
-      x
-    </svg:text>
-  </svg:g>
+
 </svg:g>

@@ -7,7 +7,7 @@ import { ConfirmDialogComponent } from 'src/app/utils/components/confirm-dialog/
 @Component({
   selector: '[app-equipment-node]',
   templateUrl: './equipment-node.component.html',
-  styleUrls: ['./equipment-node.component.css']
+  styleUrls: ['./equipment-node.component.css', '../hierarchy/hierarchy.component.css']
 })
 export class EquipmentNodeComponent implements OnInit {
   @Input() node: Node;

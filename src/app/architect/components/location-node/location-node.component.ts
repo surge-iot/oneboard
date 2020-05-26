@@ -7,7 +7,7 @@ import { LocationService } from 'src/app/location/location.service';
 @Component({
   selector: '[app-location-node]',
   templateUrl: './location-node.component.html',
-  styleUrls: ['./location-node.component.css']
+  styleUrls: ['./location-node.component.css', '../hierarchy/hierarchy.component.css']
 })
 export class LocationNodeComponent implements OnInit {
   @Input() node: Node;

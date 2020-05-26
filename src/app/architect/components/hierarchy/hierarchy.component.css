@@ -15,3 +15,61 @@
   right:50px;
   z-index: 2;
 }
+
+/* node styles */
+
+text{
+  fill:#ffffff;
+}
+.delete-btn circle{
+  fill: #999;
+  stroke:transparent;
+}
+.delete-btn {
+  cursor: pointer;
+}
+.add-equipment-btn circle{
+  fill: #2196f3;
+  stroke:transparent;
+}
+.add-equipment-btn {
+  cursor: pointer;
+}
+.add-point-btn circle{
+  fill: #e91e63;
+  stroke:transparent;
+}
+.add-point-btn {
+  cursor: pointer;
+}
+.link-btn circle{
+  stroke: #333;
+  stroke-width:2px;
+  fill:#aaa;
+  cursor: pointer;
+}
+
+.add-link-mode .link-btn.entry circle{
+  fill:yellow;
+}
+.add-link-mode .link-btn.exit, .add-link-mode.node:hover .control-wheel{
+  display:none;
+}
+
+.remove-link-mode .link-btn.exit circle{
+  fill:yellow;
+}
+.remove-link-mode .link-btn.entry, .remove-link-mode.node:hover .control-wheel{
+  display:none;
+}
+
+
+.control-wheel{
+  display:none;
+  stroke: #222222;
+  stroke-width:20px;
+  fill:transparent;
+}
+.node:hover .control-wheel{
+  display:block;
+}
