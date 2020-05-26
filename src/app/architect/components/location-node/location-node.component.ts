@@ -3,6 +3,8 @@ import { Node, Link } from '../../../utils/interfaces/graph.interface';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from 'src/app/utils/components/confirm-dialog/confirm-dialog.component';
 import { LocationService } from 'src/app/location/location.service';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
+import { CreateEquipmentComponent } from 'src/app/equipment/components/create-equipment/create-equipment.component';
 
 @Component({
   selector: '[app-location-node]',
@@ -17,8 +19,9 @@ export class LocationNodeComponent implements OnInit {
   @Output() onExitConnectorClick = new EventEmitter<Node>();
   constructor(
     public dialog: MatDialog,
-    private locationService: LocationService
-  ) { }
+    private locationService: LocationService,
+    private _bottomSheet: MatBottomSheet,
+    ) { }
 
   ngOnInit(): void {
   }
@@ -40,5 +43,15 @@ export class LocationNodeComponent implements OnInit {
     }
   }
 
+  async createEquipment() {
+    const bottomSheetRef = this._bottomSheet.open(CreateEquipmentComponent,{
+      data: { locationId: this.node.modelId },
+    });
+    const createdEquipment = await bottomSheetRef.afterDismissed().toPromise();
+    if (!createdEquipment) {
+      return;
+    }
+    this.updated.emit();
 
+  }
 }

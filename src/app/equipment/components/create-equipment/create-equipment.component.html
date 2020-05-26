@@ -1,0 +1,16 @@
+<div class="create-sub-class-container">
+  <form [formGroup]="createEquipmentForm" (ngSubmit)="onSubmit(createEquipmentForm.value)">
+    <h2>Create equipment</h2>
+    <mat-form-field appearance="fill">
+      <mat-label>Class</mat-label>
+      <input matInput formControlName="classId">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name">
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit">Save</button>
+  </form>
+</div>

@@ -21,6 +21,9 @@ import { CreateLocationComponent } from '../location/components/create-location/
 import { LocationNodeComponent } from './components/location-node/location-node.component';
 import { EquipmentNodeComponent } from './components/equipment-node/equipment-node.component';
 import { PointNodeComponent } from './components/point-node/point-node.component';
+import { CreateEquipmentComponent } from '../equipment/components/create-equipment/create-equipment.component';
+import { LocationModule } from '../location/location.module';
+import { EquipmentModule } from '../equipment/equipment.module';
 
 
 @NgModule({
@@ -41,13 +44,9 @@ import { PointNodeComponent } from './components/point-node/point-node.component
     NgxGraphModule,
     FormsModule,
     ReactiveFormsModule,
-    UtilsModule
-  ],
-  entryComponents: [
-    HierarchyComponent,
-    CreateLocationComponent,
-    MatFormFieldModule,
-    MatInputModule,
-  ],
+    UtilsModule,
+    LocationModule,
+    EquipmentModule,
+  ]
 })
 export class ArchitectModule { }

@@ -20,8 +20,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CreateLocationComponent
   ],
   imports: [
+    // Angular
     CommonModule,
+    FormsModule,
     RouterModule,
+    ReactiveFormsModule,
     // Material
     MatTooltipModule,
     MatTreeModule,
@@ -30,16 +33,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatProgressBarModule,
     MatFormFieldModule,
     MatInputModule,
-    FormsModule,
-    ReactiveFormsModule,
   ],
   entryComponents: [
     CreateLocationComponent,
-    MatFormFieldModule,
-    MatInputModule,
   ],
   exports: [
     LocationTreeComponent,
+    CreateLocationComponent
   ]
 })
 export class LocationModule { }
