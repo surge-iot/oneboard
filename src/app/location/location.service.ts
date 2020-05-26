@@ -37,20 +37,19 @@ export class LocationService {
     );
   }
   // Get details abouut location identified by id
-  getLocation(id: number): Observable<Location> {
+  findById(id: number): Observable<Location> {
     return this.http.get<Location>(this.locationUrl + id).pipe(
       catchError(this.responseService.handleError)
     );
   }
-  // Get children of location
-  getChildren(id: number): Observable<Location[]> {
-    return this.http.get<Location[]>(this.locationUrl + '?parentId=' + id).pipe(
+  findChildren(id:number): Observable<Location[]>{
+    return this.http.get<Location[]>(`${this.locationUrl}${id}/children` ).pipe(
       catchError(this.responseService.handleError)
     );
   }
-  // Get path of location
-  getPath(id: number): Observable<Location[]> {
-    return this.http.get<Location[]>(this.locationUrl + id + '/path').pipe(
+
+  findParents(id:number): Observable<Location[]>{
+    return this.http.get<Location[]>(`${this.locationUrl}${id}/parents` ).pipe(
       catchError(this.responseService.handleError)
     );
   }
@@ -66,5 +65,14 @@ export class LocationService {
       catchError(this.responseService.handleError)
     );
   }
-
+  addChild(id:number, childId:number): Observable<number>{
+    return this.http.put<number>(`${this.locationUrl}${id}/add-child/${childId}`,null ).pipe(
+      catchError(this.responseService.handleError)
+    );
+  }
+  removeChild(id:number, childId:number): Observable<number>{
+    return this.http.delete<number>(`${this.locationUrl}${id}/remove-child/${childId}`).pipe(
+      catchError(this.responseService.handleError)
+    );
+  }
 }

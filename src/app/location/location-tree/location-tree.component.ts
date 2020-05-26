@@ -33,8 +33,8 @@ export class DynamicDatabase {
     return this.rootLevelNodes.map(location => new DynamicFlatNode(location.id, location.name, 0, location.children.length !== 0));
   }
 
-  getChildren(id: number): Observable<Location[] | undefined> {
-    return this.locationService.getChildren(id);
+  findChildren(id: number): Observable<Location[] | undefined> {
+    return this.locationService.findChildren(id);
   }
 
   isExpandable(node: Location): boolean {
@@ -83,7 +83,7 @@ export class DynamicDataSource {
    */
   async toggleNode(node: DynamicFlatNode, expand: boolean) {
     node.isLoading = true;
-    const children = await this.database.getChildren(node.id).toPromise();
+    const children = await this.database.findChildren(node.id).toPromise();
     const index = this.data.indexOf(node);
     if (!children || index < 0) { // If no children, or cannot find the node, no op
       return;

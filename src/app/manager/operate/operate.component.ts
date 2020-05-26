@@ -20,16 +20,11 @@ export class OperateComponent implements OnInit {
 
     this.route.paramMap.pipe(
       switchMap((params: ParamMap) =>
-        this.locationService.getLocation(+params.get('id')))
+        this.locationService.findById(+params.get('id')))
     ).subscribe((location: Location) => {
       this.location = location;
-      this.locationService.getChildren(this.location.id)
+      this.locationService.findChildren(this.location.id)
         .subscribe((locations: Location[]) => this.children = locations);
-      this.locationService.getPath(this.location.id)
-        .subscribe((locations: Location[]) => {
-          let path = locations;
-          this.path = path.reverse();
-        });
     });
 
   }

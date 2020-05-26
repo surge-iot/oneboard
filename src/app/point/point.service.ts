@@ -51,4 +51,25 @@ export class PointService {
     );
   }
 
+  addPointOfLocation(id:number, locationId:number): Observable<number>{
+    return this.http.put<number>(`${this.pointUrl}${id}/add-point-of-location/${locationId}`,null ).pipe(
+      catchError(this.responseService.handleError)
+    );
+  }
+  removePointOfLocation(id:number, locationId:number): Observable<number>{
+    return this.http.delete<number>(`${this.pointUrl}${id}/remove-point-of-location/${locationId}`).pipe(
+      catchError(this.responseService.handleError)
+    );
+  }
+
+  addPointOfEquipment(id:number, equipmentId:number): Observable<number>{
+    return this.http.put<number>(`${this.pointUrl}${id}/add-point-of-equipment/${equipmentId}`,null ).pipe(
+      catchError(this.responseService.handleError)
+    );
+  }
+  removePointOfEquipment(id:number, equipmentId:number): Observable<number>{
+    return this.http.delete<number>(`${this.pointUrl}${id}/remove-point-of-equipment/${equipmentId}`).pipe(
+      catchError(this.responseService.handleError)
+    );
+  }
 }

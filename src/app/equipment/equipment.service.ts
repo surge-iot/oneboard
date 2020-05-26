@@ -43,23 +43,36 @@ export class EquipmentService {
       catchError(this.responseService.handleError)
     );
   }
-
-  // Get path of equipment
-  path(id: number): Observable<Equipment[]> {
-    return this.http.get<Equipment[]>(this.equipmentUrl + id + '/path').pipe(
+  findChildren(id:number): Observable<Location[]>{
+    return this.http.get<Location[]>(`${this.equipmentUrl}${id}/children` ).pipe(
       catchError(this.responseService.handleError)
     );
   }
 
-  // Create a new equipmentClass
+  findParents(id:number): Observable<Location[]>{
+    return this.http.get<Location[]>(`${this.equipmentUrl}${id}/parents` ).pipe(
+      catchError(this.responseService.handleError)
+    );
+  }
+  // Create a new equipment
   create(props: Partial<Equipment>): Observable<Equipment> {
     return this.http.post<Equipment>(this.equipmentUrl, props).pipe(
       catchError(this.responseService.handleError)
     )
   }
-  // Delete a equipmentClass by id
+  // Delete a equipment by id
   delete(id: number): Observable<Equipment> {
     return this.http.delete<Equipment>(this.equipmentUrl + id).pipe(
+      catchError(this.responseService.handleError)
+    );
+  }
+  addChild(id:number, childId:number): Observable<number>{
+    return this.http.put<number>(`${this.equipmentUrl}${id}/add-child/${childId}`,null ).pipe(
+      catchError(this.responseService.handleError)
+    );
+  }
+  removeChild(id:number, childId:number): Observable<number>{
+    return this.http.delete<number>(`${this.equipmentUrl}${id}/remove-child/${childId}`).pipe(
       catchError(this.responseService.handleError)
     );
   }
