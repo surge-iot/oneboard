@@ -21,10 +21,7 @@ import { OperateComponent } from './operate/operate.component';
 @NgModule({
   declarations: [HomeComponent, ManagerComponent, OperateComponent],
   imports: [
-    // App modules
-    AuthModule,
-    LocationModule,
-    // Core
+    // Angular
     CommonModule,
     ManagerRoutingModule,
     LayoutModule,
@@ -36,7 +33,10 @@ import { OperateComponent } from './operate/operate.component';
     MatListModule,
     MatMenuModule,
     MatCardModule,
-    MatGridListModule
+    MatGridListModule,
+    // App
+    AuthModule,
+    LocationModule,
   ]
 })
 export class ManagerModule { }

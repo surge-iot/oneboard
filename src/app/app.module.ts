@@ -36,6 +36,7 @@ import { ManagerModule } from './manager/manager.module';
 import { LocationModule } from './location/location.module';
 import { ClassBuilderModule } from './class-builder/class-builder.module';
 import { ArchitectModule } from './architect/architect.module';
+import { UtilsModule } from './utils/utils.module';
 
 export function tokenGetter() {
   return localStorage.getItem("access_token");
@@ -45,17 +46,10 @@ export function tokenGetter() {
   declarations: [
     AppComponent,
     WelcomeComponent,
-    PageNotFoundComponent,
+    PageNotFoundComponent
   ],
   imports: [
-    // App modules
-    AuthModule,
-    ManagerModule,
-    LocationModule,
-    ClassBuilderModule,
-    ArchitectModule,
-    // Core
-    AppRoutingModule,
+    // Angular
     BrowserModule,
     BrowserAnimationsModule,
     LayoutModule,
@@ -82,6 +76,13 @@ export function tokenGetter() {
     MatSnackBarModule,
     MatTreeModule,
     MatTooltipModule,
+    // App
+    AuthModule,
+    ManagerModule,
+    ClassBuilderModule,
+    ArchitectModule,
+    UtilsModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

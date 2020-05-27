@@ -29,9 +29,12 @@ import { EquipmentModule } from '../equipment/equipment.module';
 @NgModule({
   declarations: [BlueprintComponent, HierarchyComponent, LocationNodeComponent, EquipmentNodeComponent, PointNodeComponent],
   imports: [
+    // Angular
     CommonModule,
-    ArchitectRoutingModule,
     LayoutModule,
+    FormsModule,
+    ReactiveFormsModule,
+    // Material
     MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,
@@ -41,12 +44,13 @@ import { EquipmentModule } from '../equipment/equipment.module';
     MatFormFieldModule,
     MatInputModule,
     MatCardModule,
-    NgxGraphModule,
-    FormsModule,
-    ReactiveFormsModule,
+    // App
+    ArchitectRoutingModule,
     UtilsModule,
     LocationModule,
     EquipmentModule,
+    // 3rd party
+    NgxGraphModule,
   ]
 })
 export class ArchitectModule { }

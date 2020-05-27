@@ -20,9 +20,12 @@ import { UtilsModule } from '../utils/utils.module';
 @NgModule({
   declarations: [BaseComponent, CreateSubClassComponent],
   imports: [
+    // Angular
     CommonModule,
-    ClassBuilderRoutingModule,
     LayoutModule,
+    FormsModule,
+    // Material
+    ReactiveFormsModule,
     MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,
@@ -31,16 +34,14 @@ import { UtilsModule } from '../utils/utils.module';
     MatBottomSheetModule,
     MatFormFieldModule,
     MatInputModule,
+    // App
+    UtilsModule,
+    ClassBuilderRoutingModule,
+    // 3rd party
     NgxGraphModule,
-    FormsModule,
-    ReactiveFormsModule,
-    UtilsModule
   ],
   entryComponents: [
-    BaseComponent,
     CreateSubClassComponent,
-    MatFormFieldModule,
-    MatInputModule,
   ],
 })
 export class ClassBuilderModule { }

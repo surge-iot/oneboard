@@ -13,8 +13,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatIconModule } from '@angular/material/icon';
-import { TopBarComponent } from './top-bar/top-bar.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { UtilsModule } from '../utils/utils.module';
 
 
 @NgModule({
@@ -22,12 +22,11 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     LoginComponent,
     RegisterComponent,
     LogoutComponent,
-    TopBarComponent
   ],
   imports: [
+    // Angular
     CommonModule,
     FormsModule,
-    AuthRoutingModule,
     ReactiveFormsModule,
     // Material
     MatButtonModule,
@@ -36,11 +35,13 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatFormFieldModule,
     MatSnackBarModule,
     MatIconModule,
-    MatToolbarModule
+    MatToolbarModule,
+    // App
+    AuthRoutingModule,
+    UtilsModule,
   ],
   exports: [
-    LogoutComponent,
-    TopBarComponent
+    LogoutComponent
   ]
 })
 export class AuthModule { }

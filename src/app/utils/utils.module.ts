@@ -3,19 +3,30 @@ import { CommonModule } from '@angular/common';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
+import { TopBarComponent } from './components/top-bar/top-bar.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @NgModule({
-  declarations: [ConfirmDialogComponent],
+  declarations: [
+    ConfirmDialogComponent,
+    TopBarComponent,
+  ],
   imports: [
+    // Angular
+    CommonModule,
+    // Material
     MatDialogModule,
     MatButtonModule,
-    CommonModule
+    MatIconModule,
+    MatToolbarModule,
   ],
   entryComponents: [
-    MatDialogModule,
-    MatButtonModule,
     ConfirmDialogComponent
   ],
-  exports: [ConfirmDialogComponent]
+  exports: [
+    ConfirmDialogComponent,
+    TopBarComponent,
+  ]
 })
 export class UtilsModule { }
