@@ -20,15 +20,27 @@ export class LocationClassService {
   constructor(private http: HttpClient, private responseService: ResponseService) {
     this.locationClassUrl = environment.apiRoot + 'location-class/';
   }
+  // Get all root-level locationsClasses
+  findRoots(): Observable<Location[]> {
+    return this.http.get<Location[]>(this.locationClassUrl + 'roots').pipe(
+      catchError(this.responseService.handleError)
+    );
+  }
   // Get all locationClasses
   findAll(): Observable<LocationClass[]> {
     return this.http.get<LocationClass[]>(this.locationClassUrl).pipe(
       catchError(this.responseService.handleError)
     );
   }
-  // Get details abouut locationClass identified by id
+  // Get details about locationClass identified by id
   findById(id: number): Observable<LocationClass> {
     return this.http.get<LocationClass>(this.locationClassUrl + id).pipe(
+      catchError(this.responseService.handleError)
+    );
+  }
+  // Get children of locationClass identified by id
+  findChildren(id: number): Observable<LocationClass> {
+    return this.http.get<LocationClass>(`${this.locationClassUrl}?parentId=${id}`).pipe(
       catchError(this.responseService.handleError)
     );
   }

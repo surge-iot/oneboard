@@ -20,13 +20,25 @@ export class PointClassService {
   constructor(private http: HttpClient, private responseService: ResponseService) {
     this.pointClassUrl = environment.apiRoot + 'point-class/';
   }
+  // Get all root-level pointClasses
+  findRoots(): Observable<Location[]> {
+    return this.http.get<Location[]>(this.pointClassUrl + 'roots').pipe(
+      catchError(this.responseService.handleError)
+    );
+  }
   // Get all pointClasses
   findAll(): Observable<PointClass[]> {
     return this.http.get<PointClass[]>(this.pointClassUrl).pipe(
       catchError(this.responseService.handleError)
     );
   }
-  // Get details abouut pointClass identified by id
+  // Get children of pointClass identified by id
+  findChildren(id: number): Observable<PointClass> {
+    return this.http.get<PointClass>(`${this.pointClassUrl}?parentId=${id}`).pipe(
+      catchError(this.responseService.handleError)
+    );
+  }
+  // Get details about pointClass identified by id
   findById(id: number): Observable<PointClass> {
     return this.http.get<PointClass>(this.pointClassUrl + id).pipe(
       catchError(this.responseService.handleError)

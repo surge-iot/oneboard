@@ -20,15 +20,27 @@ export class EquipmentClassService {
   constructor(private http: HttpClient, private responseService: ResponseService) {
     this.equipmentClassUrl = environment.apiRoot + 'equipment-class/';
   }
+  // Get all root-level equipmentClasses
+  findRoots(): Observable<Location[]> {
+    return this.http.get<Location[]>(this.equipmentClassUrl + 'roots').pipe(
+      catchError(this.responseService.handleError)
+    );
+  }
   // Get all equipmentClasses
   findAll(): Observable<EquipmentClass[]> {
     return this.http.get<EquipmentClass[]>(this.equipmentClassUrl).pipe(
       catchError(this.responseService.handleError)
     );
   }
-  // Get details abouut equipmentClass identified by id
+  // Get details about equipmentClass identified by id
   findById(id: number): Observable<EquipmentClass> {
     return this.http.get<EquipmentClass>(this.equipmentClassUrl + id).pipe(
+      catchError(this.responseService.handleError)
+    );
+  }
+  // Get children of equipmentClass identified by id
+  findChildren(id: number): Observable<EquipmentClass> {
+    return this.http.get<EquipmentClass>(`${this.equipmentClassUrl}?parentId=${id}`).pipe(
       catchError(this.responseService.handleError)
     );
   }

@@ -25,8 +25,8 @@ export class LocationService {
     this.locationUrl = environment.apiRoot + 'location/';
   }
   // Get all root-level locations that the logged-in user is allowed to access
-  getRootLocations(): Observable<Location[]> {
-    return this.http.get<Location[]>(this.locationUrl + '?parentId=null').pipe(
+  findRoots(): Observable<Location[]> {
+    return this.http.get<Location[]>(this.locationUrl + 'roots').pipe(
       catchError(this.responseService.handleError)
     );
   }

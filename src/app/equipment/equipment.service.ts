@@ -26,8 +26,8 @@ export class EquipmentService {
     this.equipmentUrl = environment.apiRoot + 'equipment/';
   }
   // Get all root-level equipments that the logged-in user is allowed to access
-  findRootEquipments(): Observable<Equipment[]> {
-    return this.http.get<Equipment[]>(this.equipmentUrl + '?parentId=null').pipe(
+  findRoots(): Observable<Location[]> {
+    return this.http.get<Location[]>(this.equipmentUrl + 'roots').pipe(
       catchError(this.responseService.handleError)
     );
   }
