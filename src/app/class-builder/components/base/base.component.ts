@@ -16,7 +16,7 @@ import { Node, Link } from '../../../utils/interfaces/graph.interface';
 @Component({
   selector: 'app-base',
   templateUrl: './base.component.html',
-  styleUrls: ['./base.component.css']
+  styleUrls: ['./base.component.css','../../../architect/components/hierarchy/hierarchy.component.css']
 })
 export class BaseComponent {
 
