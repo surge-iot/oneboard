@@ -1,11 +1,8 @@
 <div class="create-sub-class-container">
   <form [formGroup]="createLocationForm" (ngSubmit)="onSubmit(createLocationForm.value)">
     <h2>Create location</h2>
-    <app-location-class-tree></app-location-class-tree>
-    <mat-form-field appearance="fill">
-      <mat-label>Class</mat-label>
-      <input matInput formControlName="classId">
-    </mat-form-field>
+    <mat-label>Select Class</mat-label>
+    <app-location-class-tree (selected)="onClassSelected($event)" ></app-location-class-tree>
 
     <mat-form-field appearance="fill">
       <mat-label>Name</mat-label>

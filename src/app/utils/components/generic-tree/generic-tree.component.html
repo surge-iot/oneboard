@@ -1,21 +1,19 @@
 <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
   <!-- This is the tree node template for leaf nodes -->
-  <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+  <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding [ngClass]="node===activeNode?'active':''">
     <!-- use a disabled button to provide padding for tree leaf -->
     <button type="button" mat-icon-button disabled></button>
-    <button type="button" mat-button [matTooltip]="node.name" [matTooltipShowDelay]="1000"
-      [routerLink]="[linkRelativeTo, node.id]">{{node.name}}</button>
+    <button type="button" mat-button [matTooltip]="node.name" [matTooltipShowDelay]="1000" (click)=onSelected(node)>{{node.name}}</button>
 
   </mat-tree-node>
   <!-- This is the tree node template for expandable nodes -->
-  <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding>
+  <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding [ngClass]="node===activeNode?'active':''">
     <button type="button" mat-icon-button matTreeNodeToggle [attr.aria-label]="'toggle ' + node.name">
       <mat-icon class="mat-icon-rtl-mirror">
         {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
       </mat-icon>
     </button>
-    <button type="button" mat-button [matTooltip]="node.name" [matTooltipShowDelay]="1000"
-      [routerLink]="[linkRelativeTo, node.id]">{{node.name}}</button>
+    <button type="button" mat-button [matTooltip]="node.name" [matTooltipShowDelay]="1000" (click)=onSelected(node)>{{node.name}}</button>
       <mat-progress-bar *ngIf="node.isLoading" mode="indeterminate" class="example-tree-progress-bar"></mat-progress-bar>
 
   </mat-tree-node>

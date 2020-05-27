@@ -40,4 +40,8 @@ export class CreateLocationComponent implements OnInit {
       console.warn('New class created: ', createdLocation);
     }
   }
+  onClassSelected(locationClass){
+    console.log(locationClass);
+    this.createLocationForm.controls['classId'].setValue(locationClass.id)
+  }
 }

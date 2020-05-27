@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Injectable } from '@angular/core';
+import { Component, OnInit, Input, Injectable, Output, EventEmitter } from '@angular/core';
 import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
 import { FlatTreeControl } from '@angular/cdk/tree';
 import { Observable, BehaviorSubject, merge } from 'rxjs';
@@ -15,8 +15,7 @@ interface GenericModel {
  * nodes include level index and whether they can be expanded or not.
  */
 export class DynamicFlatNode {
-  constructor(public id: number, public name: string, public level: number = 1, public expandable: boolean = false,
-    public isLoading: boolean = false) { }
+  constructor(public id: number, public name: string, public level: number = 1, public expandable: boolean = false, public isLoading: boolean = false) { }
 }
 
 /**
@@ -87,6 +86,7 @@ export class DynamicDataSource {
   async toggleNode(node: DynamicFlatNode, expand: boolean) {
     node.isLoading = true;
     const children = await this.database.findChildren(node.id).toPromise();
+    node.isLoading = false;
     const index = this.data.indexOf(node);
     if (!children || index < 0) { // If no children, or cannot find the node, no op
       return;
@@ -102,7 +102,6 @@ export class DynamicDataSource {
 
     // notify the change
     this.dataChange.next(this.data);
-    node.isLoading = false;
   }
 }
 
@@ -110,8 +109,6 @@ export class DynamicDataSource {
 
 
 export abstract class GenericTreeComponent {
-  @Input()
-  linkRelativeTo: string
 
   constructor(private service) {
     this.database = new DynamicDatabase(this.service);
@@ -120,13 +117,21 @@ export abstract class GenericTreeComponent {
 
     this.database.initialData().then(initialData => { this.dataSource.data = initialData });
   }
+  @Output() selected = new EventEmitter<DynamicFlatNode>();
+
   treeControl: FlatTreeControl<DynamicFlatNode>;
   database: DynamicDatabase;
   dataSource: DynamicDataSource;
+  activeNode:DynamicFlatNode;
 
   getLevel = (node: DynamicFlatNode) => { return node.level; };
 
   isExpandable = (node: DynamicFlatNode) => { return node.expandable; };
 
   hasChild = (_: number, _nodeData: DynamicFlatNode) => { return _nodeData.expandable; };
+
+  onSelected(node){
+    this.activeNode=node;
+    this.selected.emit(node);
+  }
 }

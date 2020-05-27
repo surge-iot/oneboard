@@ -2,3 +2,8 @@
   color: #757575;
   margin-right: 5px;
 }
+.active{
+  color:#009688;
+  background-color: #535353;
+  border-radius: 10px;
+}
