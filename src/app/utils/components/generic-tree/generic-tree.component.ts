@@ -23,7 +23,6 @@ export class DynamicFlatNode {
  * Database for dynamic data. When expanding a node in the tree, the data source will need to fetch
  * the descendants data from the database.
  */
-@Injectable()
 export class DynamicDatabase {
   rootLevelNodes: GenericModel[];
   constructor(private service) {
@@ -110,25 +109,19 @@ export class DynamicDataSource {
 
 
 
-@Component({
-  selector: 'app-generic-tree',
-  templateUrl: './generic-tree.component.html',
-  styleUrls: ['./generic-tree.component.css'],
-  providers: [DynamicDatabase]
-})
-export class GenericTreeComponent {
+export abstract class GenericTreeComponent {
   @Input()
   linkRelativeTo: string
 
-  constructor(database: DynamicDatabase) {
+  constructor(private service) {
+    this.database = new DynamicDatabase(this.service);
     this.treeControl = new FlatTreeControl<DynamicFlatNode>(this.getLevel, this.isExpandable);
-    this.dataSource = new DynamicDataSource(this.treeControl, database);
+    this.dataSource = new DynamicDataSource(this.treeControl, this.database);
 
-    database.initialData().then(initialData => { this.dataSource.data = initialData });
+    this.database.initialData().then(initialData => { this.dataSource.data = initialData });
   }
-
   treeControl: FlatTreeControl<DynamicFlatNode>;
-
+  database: DynamicDatabase;
   dataSource: DynamicDataSource;
 
   getLevel = (node: DynamicFlatNode) => { return node.level; };
