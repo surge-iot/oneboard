@@ -11,6 +11,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { CreateLocationComponent } from './components/create-location/create-location.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LocationClassModule } from '../location-class/location-class.module';
 
 
 
@@ -33,6 +34,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatProgressBarModule,
     MatFormFieldModule,
     MatInputModule,
+    // App
+    LocationClassModule,
   ],
   entryComponents: [
     CreateLocationComponent,

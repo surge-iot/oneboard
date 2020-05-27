@@ -23,13 +23,13 @@ export class DynamicFlatNode {
 export class DynamicDatabase {
   rootLevelNodes: Location[];
   constructor(private locationService: LocationService) {
-    this.locationService.getRootLocations().subscribe(res => {
+    this.locationService.findRoots().subscribe(res => {
       this.rootLevelNodes = res;
     })
   }
   /** Initial data from database */
   async initialData(): Promise<DynamicFlatNode[]> {
-    this.rootLevelNodes  = await this.locationService.getRootLocations().toPromise();
+    this.rootLevelNodes  = await this.locationService.findRoots().toPromise();
     return this.rootLevelNodes.map(location => new DynamicFlatNode(location.id, location.name, 0, location.children.length !== 0));
   }
 
