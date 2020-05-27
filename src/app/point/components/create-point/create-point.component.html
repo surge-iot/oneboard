@@ -1,10 +1,9 @@
 <div class="create-sub-class-container">
   <form [formGroup]="createPointForm" (ngSubmit)="onSubmit(createPointForm.value)">
     <h2>Create point</h2>
-    <mat-form-field appearance="fill">
-      <mat-label>Class</mat-label>
-      <input matInput formControlName="classId">
-    </mat-form-field>
+    <mat-label>Select Class</mat-label>
+    <app-point-class-tree (selected)="onClassSelected($event)" ></app-point-class-tree>
+
     <button mat-raised-button color="primary" type="submit">Save</button>
   </form>
 </div>

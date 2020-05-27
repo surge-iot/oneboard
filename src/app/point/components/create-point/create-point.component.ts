@@ -44,4 +44,8 @@ export class CreatePointComponent implements OnInit {
       console.warn('New class created: ', createdPoint);
     }
   }
+  onClassSelected(pointClass){
+    console.log(pointClass);
+    this.createPointForm.controls['classId'].setValue(pointClass.id)
+  }
 }

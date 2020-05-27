@@ -43,4 +43,8 @@ export class CreateEquipmentComponent implements OnInit {
       console.warn('New class created: ', createdEquipment);
     }
   }
+  onClassSelected(equipmentClass){
+    console.log(equipmentClass);
+    this.createEquipmentForm.controls['classId'].setValue(equipmentClass.id)
+  }
 }

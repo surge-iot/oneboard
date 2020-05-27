@@ -1,10 +1,8 @@
 <div class="create-sub-class-container">
   <form [formGroup]="createEquipmentForm" (ngSubmit)="onSubmit(createEquipmentForm.value)">
     <h2>Create equipment</h2>
-    <mat-form-field appearance="fill">
-      <mat-label>Class</mat-label>
-      <input matInput formControlName="classId">
-    </mat-form-field>
+    <mat-label>Select Class</mat-label>
+    <app-equipment-class-tree (selected)="onClassSelected($event)" ></app-equipment-class-tree>
 
     <mat-form-field appearance="fill">
       <mat-label>Name</mat-label>

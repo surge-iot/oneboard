@@ -5,6 +5,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { EquipmentClassModule } from '../equipment-class/equipment-class.module';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    EquipmentClassModule,
   ],
   entryComponents: [
     CreateEquipmentComponent
