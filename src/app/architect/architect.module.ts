@@ -24,6 +24,7 @@ import { PointNodeComponent } from './components/point-node/point-node.component
 import { CreateEquipmentComponent } from '../equipment/components/create-equipment/create-equipment.component';
 import { LocationModule } from '../location/location.module';
 import { EquipmentModule } from '../equipment/equipment.module';
+import { PointModule } from '../point/point.module';
 
 
 @NgModule({
@@ -49,6 +50,7 @@ import { EquipmentModule } from '../equipment/equipment.module';
     UtilsModule,
     LocationModule,
     EquipmentModule,
+    PointModule,
     // 3rd party
     NgxGraphModule,
   ]

@@ -5,6 +5,7 @@ import { ConfirmDialogComponent } from 'src/app/utils/components/confirm-dialog/
 import { LocationService } from 'src/app/location/location.service';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { CreateEquipmentComponent } from 'src/app/equipment/components/create-equipment/create-equipment.component';
+import { CreatePointComponent } from 'src/app/point/components/create-point/create-point.component';
 
 @Component({
   selector: '[app-location-node]',
@@ -52,6 +53,15 @@ export class LocationNodeComponent implements OnInit {
       return;
     }
     this.updated.emit();
-
+  }
+  async createPoint() {
+    const bottomSheetRef = this._bottomSheet.open(CreatePointComponent,{
+      data: { locationId: this.node.modelId },
+    });
+    const createdPoint = await bottomSheetRef.afterDismissed().toPromise();
+    if (!createdPoint) {
+      return;
+    }
+    this.updated.emit();
   }
 }

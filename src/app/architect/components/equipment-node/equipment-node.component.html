@@ -12,7 +12,7 @@
       </svg:text>
     </svg:g>
 
-    <svg:g class="add-point-btn" (click)="delete(node)">
+    <svg:g class="add-point-btn" (click)="createPoint()">
       <svg:circle r="10" [attr.cx]="node.dimension.width/2" [attr.cy]="-15" />
       <svg:text alignment-baseline="central" text-anchor="middle" [attr.x]="node.dimension.width/2"
         [attr.y]="-15" fill="#ffffff" stroke="transparent">

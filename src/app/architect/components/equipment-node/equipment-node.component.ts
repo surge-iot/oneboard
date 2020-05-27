@@ -3,6 +3,8 @@ import { Node, Link } from '../../../utils/interfaces/graph.interface';
 import { MatDialog } from '@angular/material/dialog';
 import { EquipmentService } from 'src/app/equipment/equipment.service';
 import { ConfirmDialogComponent } from 'src/app/utils/components/confirm-dialog/confirm-dialog.component';
+import { CreatePointComponent } from 'src/app/point/components/create-point/create-point.component';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
 
 @Component({
   selector: '[app-equipment-node]',
@@ -19,8 +21,9 @@ export class EquipmentNodeComponent implements OnInit {
   constructor(
 
     public dialog: MatDialog,
-    private locationService: EquipmentService
-  ) { }
+    private locationService: EquipmentService,
+    private _bottomSheet: MatBottomSheet,
+    ) { }
 
   ngOnInit(): void {
   }
@@ -42,4 +45,14 @@ export class EquipmentNodeComponent implements OnInit {
     }
   }
 
+  async createPoint() {
+    const bottomSheetRef = this._bottomSheet.open(CreatePointComponent,{
+      data: { equipmentId: this.node.modelId },
+    });
+    const createdPoint = await bottomSheetRef.afterDismissed().toPromise();
+    if (!createdPoint) {
+      return;
+    }
+    this.updated.emit();
+  }
 }
