@@ -13,12 +13,14 @@ import { CeilingfanComponent } from './components/ceilingfan/ceilingfan.componen
 import { MatSliderModule } from '@angular/material/slider';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import { PointModule } from '../point/point.module';
+import { LightComponent } from './components/light/light.component';
 
 @NgModule({
   declarations: [
     CreateEquipmentComponent,
     EquipmentComponent,
-    CeilingfanComponent
+    CeilingfanComponent,
+    LightComponent
   ],
   imports: [
     // Angular

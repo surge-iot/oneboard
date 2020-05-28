@@ -13,6 +13,7 @@
       </svg>
     </div>
   </mat-card-header>
-  <app-ceilingfan *ngIf="equipment.classId==='FAN.CEILINGFAN'" [equipment]="equipment"></app-ceilingfan>
+  <app-equipment-ceilingfan *ngIf="equipment.classId==='FAN.CEILINGFAN'" [equipment]="equipment"></app-equipment-ceilingfan>
+  <app-equipment-light *ngIf="equipment.classId==='LIGHTINGSYSTEM.LIGHT'" [equipment]="equipment"></app-equipment-light>
 
 </mat-card>
