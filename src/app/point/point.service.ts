@@ -26,8 +26,8 @@ export class PointService {
     this.pointUrl = environment.apiRoot + 'point/';
   }
   // Get all points that the logged-in user is allowed to access
-  findAll(): Observable<Point[]> {
-    return this.http.get<Point[]>(this.pointUrl).pipe(
+  findAll(filters?): Observable<Point[]> {
+    return this.http.get<Point[]>(this.pointUrl, {params: filters}).pipe(
       catchError(this.responseService.handleError)
     );
   }

@@ -32,8 +32,8 @@ export class EquipmentService {
     );
   }
   // Get all equipments that the logged-in user is allowed to access
-  findAll(): Observable<Equipment[]> {
-    return this.http.get<Equipment[]>(this.equipmentUrl).pipe(
+  findAll(filters?): Observable<Equipment[]> {
+    return this.http.get<Equipment[]>(this.equipmentUrl,{params:filters}).pipe(
       catchError(this.responseService.handleError)
     );
   }
