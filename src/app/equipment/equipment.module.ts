@@ -11,6 +11,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { CeilingfanComponent } from './components/ceilingfan/ceilingfan.component';
 import { MatSliderModule } from '@angular/material/slider';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { MatSliderModule } from '@angular/material/slider';
     MatCardModule,
     MatSlideToggleModule,
     MatSliderModule,
+    DragDropModule,
     // App
     EquipmentClassModule,
   ],

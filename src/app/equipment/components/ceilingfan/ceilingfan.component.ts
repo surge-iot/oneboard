@@ -8,13 +8,22 @@ import { Equipment } from '../../equipment.service';
 })
 export class CeilingfanComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+    this.switch = false;
+    this.speed = 0;
+   }
   @Input() equipment: Equipment;
-  speed:number;
-  switch:boolean;
+  speed: number;
+  switch: boolean;
   ngOnInit(): void {
-    this.switch = this.equipment.points.filter((point)=>point.classId==='SETPOINT.SWITCH')[0].meta.switch || false;
-    this.speed = this.equipment.points.filter((point)=>point.classId==='SETPOINT.SPEED')[0].meta.speed || 0;
+    try {
+      this.switch = this.equipment.points.filter((point) => point.classId === 'SETPOINT.SWITCH')[0].meta.switch;
+      this.speed = this.equipment.points.filter((point) => point.classId === 'SETPOINT.SPEED')[0].meta.speed;
+    }
+    catch{
+
+    }
+
   }
 
 }

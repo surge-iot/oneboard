@@ -12,7 +12,7 @@ export interface Equipment {
   name: string;
   classId: string;
   locationId: number | null;
-  meta: {};
+  meta: any;
   children: Equipment[];
   parents?: Equipment[];
   points?:Point[];
@@ -58,6 +58,12 @@ export class EquipmentService {
   // Create a new equipment
   create(props: Partial<Equipment>): Observable<Equipment> {
     return this.http.post<Equipment>(this.equipmentUrl, props).pipe(
+      catchError(this.responseService.handleError)
+    )
+  }
+  // Update an equipment
+  update(id:number, props: Partial<Equipment>): Observable<Equipment> {
+    return this.http.put<Equipment>(this.equipmentUrl + id, props).pipe(
       catchError(this.responseService.handleError)
     )
   }
