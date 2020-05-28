@@ -7,5 +7,6 @@
       {{equipment.classId}}
     </mat-card-subtitle>
   </mat-card-header>
+  <app-ceilingfan *ngIf="equipment.classId==='FAN.CEILINGFAN'" [equipment]="equipment"></app-ceilingfan>
 
 </mat-card>

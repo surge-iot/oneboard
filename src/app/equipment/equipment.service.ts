@@ -4,17 +4,18 @@ import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { ResponseService } from '../utils/services/response.service';
 import { catchError, retry } from 'rxjs/operators';
+import { Point } from '../point/point.service';
 
 
 export interface Equipment {
   id: number;
   name: string;
   classId: string;
-  parentId: number | null;
   locationId: number | null;
   meta: {};
   children: Equipment[];
-  links: Equipment[]
+  parents?: Equipment[];
+  points?:Point[];
 }
 
 @Injectable({

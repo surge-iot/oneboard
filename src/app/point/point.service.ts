@@ -9,6 +9,7 @@ import { Location } from '../location/location.service';
 
 
 export interface Point {
+  meta: any;
   id: number;
   classId: string;
   locationId: number | null;

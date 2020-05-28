@@ -8,11 +8,15 @@ import { MatButtonModule } from '@angular/material/button';
 import { EquipmentClassModule } from '../equipment-class/equipment-class.module';
 import { EquipmentComponent } from './components/equipment/equipment.component';
 import { MatCardModule } from '@angular/material/card';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { CeilingfanComponent } from './components/ceilingfan/ceilingfan.component';
+import { MatSliderModule } from '@angular/material/slider';
 
 @NgModule({
   declarations: [
     CreateEquipmentComponent,
-    EquipmentComponent
+    EquipmentComponent,
+    CeilingfanComponent
   ],
   imports: [
     // Angular
@@ -24,6 +28,8 @@ import { MatCardModule } from '@angular/material/card';
     MatInputModule,
     MatButtonModule,
     MatCardModule,
+    MatSlideToggleModule,
+    MatSliderModule,
     // App
     EquipmentClassModule,
   ],
