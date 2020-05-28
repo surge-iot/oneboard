@@ -6,10 +6,16 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { PointClassModule } from '../point-class/point-class.module';
+import { SwitchComponent } from './components/command/switch/switch.component';
+import { SpeedComponent } from './components/command/speed/speed.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatSliderModule } from '@angular/material/slider';
 
 @NgModule({
   declarations: [
     CreatePointComponent,
+    SwitchComponent,
+    SpeedComponent,
   ],
   imports: [
     // Angular
@@ -20,6 +26,9 @@ import { PointClassModule } from '../point-class/point-class.module';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    MatSlideToggleModule,
+    MatSliderModule,
+    // App
     PointClassModule,
   ],
   entryComponents: [
@@ -27,6 +36,8 @@ import { PointClassModule } from '../point-class/point-class.module';
   ],
   exports: [
     CreatePointComponent,
+    SwitchComponent,
+    SpeedComponent,
   ]
 })
 export class PointModule { }
