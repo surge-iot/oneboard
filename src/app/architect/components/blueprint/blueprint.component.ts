@@ -20,5 +20,9 @@ export class BlueprintComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  onLocationSelected(location){
+    console.log(location);
+    // this.createLocationForm.controls['classId'].setValue(locationClass.id)
+  }
 
 }

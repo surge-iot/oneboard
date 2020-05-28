@@ -8,7 +8,7 @@
     <mat-nav-list>
       <a mat-list-item routerLink="/manager">Home</a>
       <a mat-list-item disabled>Operate</a>
-      <app-location-tree [linkRelativeTo]="'/manager/operate'"></app-location-tree>
+      <app-location-tree (selected)="onLocationSelected($event)"></app-location-tree>
 
       <a mat-list-item routerLink="/manager/alarms">Alarms</a>
 

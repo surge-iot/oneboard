@@ -6,7 +6,7 @@
       Menu
     </mat-toolbar>
     <mat-nav-list>
-      <app-location-tree [linkRelativeTo]="'/manager/operate'"></app-location-tree>
+      <app-location-tree (selected)="onLocationSelected($event)"></app-location-tree>
 
     </mat-nav-list>
   </mat-sidenav>
