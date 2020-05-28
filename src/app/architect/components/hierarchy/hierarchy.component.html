@@ -1,7 +1,13 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav-content>
     <mat-toolbar color="primary">
-      <span>Architect [Hierarchy]</span>
+      <span>Architect Hierarchy</span>
+      <span class="nav-right">
+        <button mat-icon-button aria-label="Switch to blueprint layout" matTooltip="Blueprint layout" [routerLink]="'../blueprint'">
+          <mat-icon>view_compact</mat-icon>
+        </button>
+      </span>
+
     </mat-toolbar>
     <!-- Add Content Here -->
     <div style="height:100vh">

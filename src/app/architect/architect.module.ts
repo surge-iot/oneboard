@@ -25,6 +25,8 @@ import { CreateEquipmentComponent } from '../equipment/components/create-equipme
 import { LocationModule } from '../location/location.module';
 import { EquipmentModule } from '../equipment/equipment.module';
 import { PointModule } from '../point/point.module';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -35,6 +37,7 @@ import { PointModule } from '../point/point.module';
     LayoutModule,
     FormsModule,
     ReactiveFormsModule,
+    RouterModule,
     // Material
     MatToolbarModule,
     MatButtonModule,
@@ -45,6 +48,7 @@ import { PointModule } from '../point/point.module';
     MatFormFieldModule,
     MatInputModule,
     MatCardModule,
+    MatTooltipModule,
     // App
     ArchitectRoutingModule,
     UtilsModule,

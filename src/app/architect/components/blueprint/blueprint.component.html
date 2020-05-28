@@ -1,1 +1,25 @@
-<p>blueprint works!</p>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>
+      <a routerLink="/" class="logo"><img src="assets/images/oneboard-logo-white-base.svg" alt="" width="50"></a> &nbsp;
+      Menu
+    </mat-toolbar>
+    <mat-nav-list>
+      <app-location-tree [linkRelativeTo]="'/manager/operate'"></app-location-tree>
+
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <span>Architect Blueprint</span>
+      <span class="nav-right">
+        <button mat-icon-button aria-label="Switch to hierarchy layout" matTooltip="Hierarchy layout"
+          [routerLink]="'../hierarchy'">
+          <mat-icon>account_tree</mat-icon>
+        </button>
+      </span>
+    </mat-toolbar>
+    <!-- Add Content Here -->
+  </mat-sidenav-content>
+</mat-sidenav-container>
