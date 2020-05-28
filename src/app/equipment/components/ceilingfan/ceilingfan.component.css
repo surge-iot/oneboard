@@ -24,8 +24,12 @@ img{
   -ms-animation: rotating linear infinite;
   -o-animation: rotating linear infinite;
   animation: rotating linear infinite;
+  -webkit-animation-duration: 2s;
+  -moz-animation-duration: 2s;
+  -ms-animation-duration: 2s;
+  -o-animation-duration: 2s;
+  animation-duration: 2s;
 }
-
 .rotating-1{
   -webkit-animation-duration: 2s;
   -moz-animation-duration: 2s;

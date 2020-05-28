@@ -1,6 +1,6 @@
-<img mat-card-image src="assets/images/fan.svg" class="rotating"  [ngClass]="'rotating-'+(switch?speed:0)">
+<img mat-card-image src="assets/images/fan.svg" class="{{'rotating-'+(switch?speed:0)}}"  [ngClass]="{'rotating':switch}">
 <mat-card-actions>
-  <app-point-command-switch [(switch)]="switch"></app-point-command-switch>
-  <app-point-command-speed [(speed)]="speed" [disabled]="!switch"></app-point-command-speed>
+  <app-point-command-switch *ngIf="switchCommandExists" [(switch)]="switch"></app-point-command-switch>
+  <app-point-command-speed *ngIf="speedCommandExists" [(speed)]="speed" [disabled]="!switch"></app-point-command-speed>
 
 </mat-card-actions>
