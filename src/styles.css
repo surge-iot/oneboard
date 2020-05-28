@@ -46,6 +46,8 @@ h6 {
 }
 .justify-center{
     justify-content: center;
+    display: block;
+    text-align: -webkit-center;
 }
 .justify-end{
     justify-content: end;

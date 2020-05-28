@@ -6,11 +6,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { TopBarComponent } from './components/top-bar/top-bar.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { FillPipe } from './pipes/fill.pipe';
 
 @NgModule({
   declarations: [
     ConfirmDialogComponent,
     TopBarComponent,
+    FillPipe,
   ],
   imports: [
     // Angular
@@ -27,6 +29,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
   exports: [
     ConfirmDialogComponent,
     TopBarComponent,
+    FillPipe
   ]
 })
 export class UtilsModule { }

@@ -19,3 +19,8 @@
 .mat-list-item-disabled{
   background-color: transparent;
 }
+
+#blueprint-container{
+  height:2000px;
+  width:4000px;
+}

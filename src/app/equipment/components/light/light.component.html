@@ -1,4 +1,6 @@
-<img mat-card-image src="assets/images/light.svg" >
+<div class="justify-center">
+  <img mat-card-image src="assets/images/light.svg" *ngFor="let i of numLights | fill">
+</div>
 <mat-card-actions>
   <app-point-command-switch *ngIf="switchCommandExists" [(switch)]="switch"></app-point-command-switch>
 </mat-card-actions>

@@ -11,9 +11,11 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { CeilingfanComponent } from './components/ceilingfan/ceilingfan.component';
 import { MatSliderModule } from '@angular/material/slider';
-import {DragDropModule} from '@angular/cdk/drag-drop';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { PointModule } from '../point/point.module';
 import { LightComponent } from './components/light/light.component';
+import { ResizableModule } from 'angular-resizable-element';
+import { UtilsModule } from '../utils/utils.module';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,9 @@ import { LightComponent } from './components/light/light.component';
     // App
     EquipmentClassModule,
     PointModule,
+    UtilsModule,
+    // 3rd party
+    ResizableModule,
   ],
   entryComponents: [
     CreateEquipmentComponent

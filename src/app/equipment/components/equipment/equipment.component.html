@@ -1,4 +1,7 @@
-<mat-card cdkDrag [cdkDragBoundary]="'#blueprint-container'" [cdkDragConstrainPosition]="constrainPosition" (cdkDragEnded)="onDragEnd($event)" [style.left.px]="equipment.meta.x" [style.top.px]="equipment.meta.y">
+<mat-card cdkDrag [cdkDragBoundary]="'#blueprint-container'" [cdkDragConstrainPosition]="constrainPosition"
+  (cdkDragEnded)="onDragEnd($event)" [ngStyle]="style" mwlResizable [enableGhostResize]="true"
+  [ghostElementPositioning]="'absolute'" [resizeEdges]="{ bottom: true, right: true }" (resizeEnd)="onResizeEnd($event)"
+  [resizeSnapGrid]="{ bottom: 10, right: 10 }" [resizeCursorPrecision]="10" [validateResize]="validate">
   <mat-card-header>
     <mat-card-title>
       {{equipment.name}}
@@ -6,14 +9,17 @@
     <mat-card-subtitle>
       {{equipment.classId}}
     </mat-card-subtitle>
-    <div class="drag-handle" cdkDragHandle >
+    <div class="drag-handle" cdkDragHandle>
       <svg width="24px" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z"></path>
+        <path
+          d="M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z">
+        </path>
         <path d="M0 0h24v24H0z" fill="none"></path>
       </svg>
     </div>
   </mat-card-header>
-  <app-equipment-ceilingfan *ngIf="equipment.classId==='FAN.CEILINGFAN'" [equipment]="equipment"></app-equipment-ceilingfan>
+  <app-equipment-ceilingfan *ngIf="equipment.classId==='FAN.CEILINGFAN'" [equipment]="equipment">
+  </app-equipment-ceilingfan>
   <app-equipment-light *ngIf="equipment.classId==='LIGHTINGSYSTEM.LIGHT'" [equipment]="equipment"></app-equipment-light>
 
 </mat-card>
