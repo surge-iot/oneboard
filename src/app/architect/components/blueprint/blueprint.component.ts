@@ -42,19 +42,17 @@ export class BlueprintComponent implements OnInit {
         return of({});
       }
       )
-    ).subscribe((result:Location)=>{
+    ).subscribe((result: Location) => {
       this.location = result;
       this.postInit();
-      console.log(this.location)
     })
   }
   onLocationSelected(location) {
-    this.router.navigate(['/architect/blueprint',location.id])
+    this.router.navigate(['/architect/blueprint', location.id])
   }
 
   async postInit() {
-    this.equipments = await this.equipmentService.findAll({locationId: this.location.id}).toPromise();
-    this.points = (await this.pointService.findAll({locationId: this.location.id}).toPromise()).filter((point) =>point.equipmentId===null);
-    console.log(this.points);
+    this.equipments = await this.equipmentService.findAll({ locationId: this.location.id }).toPromise();
+    this.points = (await this.pointService.findAll({ locationId: this.location.id }).toPromise()).filter((point) => point.equipmentId === null);
   }
 }

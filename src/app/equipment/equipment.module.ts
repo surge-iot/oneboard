@@ -6,10 +6,13 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { EquipmentClassModule } from '../equipment-class/equipment-class.module';
+import { EquipmentComponent } from './components/equipment/equipment.component';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
-    CreateEquipmentComponent
+    CreateEquipmentComponent,
+    EquipmentComponent
   ],
   imports: [
     // Angular
@@ -20,13 +23,16 @@ import { EquipmentClassModule } from '../equipment-class/equipment-class.module'
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    MatCardModule,
+    // App
     EquipmentClassModule,
   ],
   entryComponents: [
     CreateEquipmentComponent
   ],
   exports: [
-    CreateEquipmentComponent
+    CreateEquipmentComponent,
+    EquipmentComponent,
   ]
 })
 export class EquipmentModule { }
