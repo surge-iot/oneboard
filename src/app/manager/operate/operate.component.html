@@ -15,5 +15,5 @@
 
 <section class="control-panel">
   <h3 matSubheader>Control panel</h3>
-
+  <app-equipment *ngFor="let equipment of equipments" [equipment]="equipment" [mutable]="false"></app-equipment>
 </section>

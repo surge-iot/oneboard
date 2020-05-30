@@ -14,6 +14,7 @@ export class EquipmentComponent implements OnInit {
     private cd: ChangeDetectorRef
   ) { }
   @Input() equipment: Equipment;
+  @Input() mutable: boolean;
 
   style = {
     top: '100px', left: '100px', width: '200px', height: null,
@@ -51,6 +52,9 @@ export class EquipmentComponent implements OnInit {
     this.equipment = { ...this.equipment }
   }
   validate(event: ResizeEvent): boolean {
+    if(!this.mutable){
+      return false
+    }
     const MIN_DIMENSIONS_PX: number = 100;
     if (
       event.rectangle.width &&

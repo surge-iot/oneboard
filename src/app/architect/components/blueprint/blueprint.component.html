@@ -22,7 +22,7 @@
     </mat-toolbar>
     <!-- Add Content Here -->
     <div id="blueprint-container">
-      <app-equipment *ngFor="let equipment of equipments" [equipment]="equipment"></app-equipment>
+      <app-equipment *ngFor="let equipment of equipments" [equipment]="equipment" [mutable]="true"></app-equipment>
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

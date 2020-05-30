@@ -16,6 +16,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { AuthModule } from '../auth/auth.module';
 import { LocationModule } from '../location/location.module';
 import { OperateComponent } from './operate/operate.component';
+import { EquipmentModule } from '../equipment/equipment.module';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { OperateComponent } from './operate/operate.component';
     // App
     AuthModule,
     LocationModule,
+    EquipmentModule,
   ]
 })
 export class ManagerModule { }

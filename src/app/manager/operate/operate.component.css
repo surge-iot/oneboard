@@ -5,3 +5,8 @@
 .locations .location-name{
   margin-left:10px;
 }
+.control-panel{
+  height:2000px;
+  width:4000px;
+  position: relative;
+}
