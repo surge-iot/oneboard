@@ -1,0 +1,12 @@
+<!-- <mat-slider [max]="5" [min]="1" [step]="1" [thumbLabel]="'true'" [ngModel]="speed"
+ (ngModelChange)="speedChange($event)" [disabled]="disabled">
+</mat-slider> -->
+<button mat-icon-button aria-label="Increase temperature" [disabled]="disabled" (click)="temperatureChange(temperature+1)" color="warn"  matTooltip="Increase temperature">
+  <mat-icon>expand_less</mat-icon>
+</button>
+
+<span>{{temperature}}</span>
+
+<button mat-icon-button aria-label="Decrease temperature" [disabled]="disabled" (click)="temperatureChange(temperature-1)" color="accent"  matTooltip="Decrease temperature">
+  <mat-icon>expand_more</mat-icon>
+</button>

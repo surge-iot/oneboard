@@ -10,12 +10,16 @@ import { SwitchComponent } from './components/command/switch/switch.component';
 import { SpeedComponent } from './components/command/speed/speed.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSliderModule } from '@angular/material/slider';
+import { TemperatureComponent } from './components/command/temperature/temperature.component';
+import { MatIcon, MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
     CreatePointComponent,
     SwitchComponent,
     SpeedComponent,
+    TemperatureComponent,
   ],
   imports: [
     // Angular
@@ -28,6 +32,8 @@ import { MatSliderModule } from '@angular/material/slider';
     MatButtonModule,
     MatSlideToggleModule,
     MatSliderModule,
+    MatIconModule,
+    MatTooltipModule,
     // App
     PointClassModule,
   ],
@@ -37,6 +43,7 @@ import { MatSliderModule } from '@angular/material/slider';
   exports: [
     CreatePointComponent,
     SwitchComponent,
+    TemperatureComponent,
     SpeedComponent,
   ]
 })

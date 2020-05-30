@@ -16,12 +16,14 @@ import { PointModule } from '../point/point.module';
 import { LightComponent } from './components/light/light.component';
 import { ResizableModule } from 'angular-resizable-element';
 import { UtilsModule } from '../utils/utils.module';
+import { AcComponent } from './components/ac/ac.component';
 
 @NgModule({
   declarations: [
     CreateEquipmentComponent,
     EquipmentComponent,
     CeilingfanComponent,
+    AcComponent,
     LightComponent
   ],
   imports: [

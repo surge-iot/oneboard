@@ -1,0 +1,15 @@
+<div class="justify-center" *ngIf="!isOn">
+  <img mat-card-image src="assets/images/ac-off.svg">
+</div>
+<div class="justify-center" *ngIf="isOn">
+  <img mat-card-image src="assets/images/ac-on.svg">
+</div>
+<mat-card-actions>
+
+  <ng-container [ngSwitch]="point.classId" *ngFor="let point of equipment.points">
+    <!-- the same view can be shown in more than one case -->
+    <app-point-command-switch *ngSwitchCase="'COMMAND.SWITCH'" [point]="point" (pointChange)="onSwitchChange($event)">
+    </app-point-command-switch>
+    <app-point-command-temperature *ngSwitchCase="'COMMAND.TEMPERATURE'" [point]="point" [disabled]="!isOn"></app-point-command-temperature>
+  </ng-container>
+</mat-card-actions>
