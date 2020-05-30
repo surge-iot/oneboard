@@ -20,16 +20,18 @@ export class LightComponent implements OnInit {
   get equipment(): Equipment {
     return this._equipment;
   }
-  switch: boolean = false;
-  switchCommandExists: boolean = false;
   numLights = 1;
+  isOn: boolean = false;
+
   ngOnInit(): void {
     try {
-      this.switchCommandExists = this._equipment.points.filter(p => p.classId === 'COMMAND.SWITCH').length != 0;
-      this.switch = this._equipment.points.filter((point) => point.classId === 'SETPOINT.SWITCH')[0].meta.switch;
+      this.isOn = this.equipment.points.filter(p =>p.classId==='COMMAND.SWITCH')[0].meta.value;
     }
     catch{
+      this.isOn = false;
     }
   }
-
+  async onSwitchChange(point){
+    this.isOn = point.meta.value;
+  }
 }

@@ -18,8 +18,10 @@
       </svg>
     </div>
   </mat-card-header>
-  <app-equipment-ceilingfan *ngIf="equipment.classId==='FAN.CEILINGFAN'" [equipment]="equipment">
-  </app-equipment-ceilingfan>
-  <app-equipment-light *ngIf="equipment.classId==='LIGHTINGSYSTEM.LIGHT'" [equipment]="equipment"></app-equipment-light>
-
+  <ng-container [ngSwitch]="equipment.classId">
+    <!-- the same view can be shown in more than one case -->
+    <app-equipment-ceilingfan *ngSwitchCase="'FAN.CEILINGFAN'" [equipment]="equipment"></app-equipment-ceilingfan>
+    <app-equipment-light *ngSwitchCase="'LIGHTINGSYSTEM.LIGHT'" [equipment]="equipment"></app-equipment-light>
+    <div *ngSwitchDefault>...</div>
+  </ng-container>
 </mat-card>

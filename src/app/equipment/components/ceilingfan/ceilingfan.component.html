@@ -1,6 +1,11 @@
-<img mat-card-image src="assets/images/fan.svg" class="{{'rotating-'+(switch?speed:0)}}"  [ngClass]="{'rotating':switch}">
+<img mat-card-image src="assets/images/fan.svg" class="{{'rotating-'+(isOn?speed:0)}}" [ngClass]="{'rotating':isOn}">
 <mat-card-actions>
-  <app-point-command-switch *ngIf="switchCommandExists" [(switch)]="switch"></app-point-command-switch>
-  <app-point-command-speed *ngIf="speedCommandExists" [(speed)]="speed" [disabled]="!switch"></app-point-command-speed>
 
+  <ng-container [ngSwitch]="point.classId" *ngFor="let point of equipment.points">
+    <!-- the same view can be shown in more than one case -->
+    <app-point-command-switch *ngSwitchCase="'COMMAND.SWITCH'" [point]="point" (pointChange)="onSwitchChange($event)">
+    </app-point-command-switch>
+    <app-point-command-speed *ngSwitchCase="'COMMAND.SPEED'" [point]="point" [disabled]="!isOn"
+      (pointChange)="onSpeedChange($event)"></app-point-command-speed>
+  </ng-container>
 </mat-card-actions>

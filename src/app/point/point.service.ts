@@ -28,7 +28,7 @@ export class PointService {
   }
   // Get all points that the logged-in user is allowed to access
   findAll(filters?): Observable<Point[]> {
-    return this.http.get<Point[]>(this.pointUrl, {params: filters}).pipe(
+    return this.http.get<Point[]>(this.pointUrl, { params: filters }).pipe(
       catchError(this.responseService.handleError)
     );
   }
@@ -45,6 +45,12 @@ export class PointService {
       catchError(this.responseService.handleError)
     )
   }
+  // Update a point
+  update(id: number, props: Partial<Point>): Observable<Point> {
+    return this.http.put<Point>(this.pointUrl + id, props).pipe(
+      catchError(this.responseService.handleError)
+    )
+  }
   // Delete a pointClass by id
   delete(id: number): Observable<Point> {
     return this.http.delete<Point>(this.pointUrl + id).pipe(
@@ -52,23 +58,23 @@ export class PointService {
     );
   }
 
-  addPointOfLocation(id:number, locationId:number): Observable<number>{
-    return this.http.put<number>(`${this.pointUrl}${id}/add-point-of-location/${locationId}`,null ).pipe(
+  addPointOfLocation(id: number, locationId: number): Observable<number> {
+    return this.http.put<number>(`${this.pointUrl}${id}/add-point-of-location/${locationId}`, null).pipe(
       catchError(this.responseService.handleError)
     );
   }
-  removePointOfLocation(id:number, locationId:number): Observable<number>{
+  removePointOfLocation(id: number, locationId: number): Observable<number> {
     return this.http.delete<number>(`${this.pointUrl}${id}/remove-point-of-location/${locationId}`).pipe(
       catchError(this.responseService.handleError)
     );
   }
 
-  addPointOfEquipment(id:number, equipmentId:number): Observable<number>{
-    return this.http.put<number>(`${this.pointUrl}${id}/add-point-of-equipment/${equipmentId}`,null ).pipe(
+  addPointOfEquipment(id: number, equipmentId: number): Observable<number> {
+    return this.http.put<number>(`${this.pointUrl}${id}/add-point-of-equipment/${equipmentId}`, null).pipe(
       catchError(this.responseService.handleError)
     );
   }
-  removePointOfEquipment(id:number, equipmentId:number): Observable<number>{
+  removePointOfEquipment(id: number, equipmentId: number): Observable<number> {
     return this.http.delete<number>(`${this.pointUrl}${id}/remove-point-of-equipment/${equipmentId}`).pipe(
       catchError(this.responseService.handleError)
     );

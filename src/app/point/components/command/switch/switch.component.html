@@ -1,1 +1,1 @@
-<mat-slide-toggle [(ngModel)]="switch">OFF/ON</mat-slide-toggle>
+<mat-slide-toggle [ngModel]="isOn" (ngModelChange)="isOnChange($event)" [disabled]="disabled">OFF/ON</mat-slide-toggle>
