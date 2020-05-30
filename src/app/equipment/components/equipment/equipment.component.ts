@@ -47,14 +47,10 @@ export class EquipmentComponent implements OnInit {
     this.equipment.meta.height = event.rectangle.height;
     this.style.width = `${this.equipment.meta.width}px`;
     this.style.height = `${this.equipment.meta.height}px`;
-    console.log(this.style)
     await this.equipmentService.update(this.equipment.id, { meta: this.equipment.meta }).toPromise();
     this.equipment = { ...this.equipment }
   }
   validate(event: ResizeEvent): boolean {
-    if(!this.mutable){
-      return false
-    }
     const MIN_DIMENSIONS_PX: number = 100;
     if (
       event.rectangle.width &&

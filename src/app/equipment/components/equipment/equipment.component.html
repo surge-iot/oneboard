@@ -1,6 +1,6 @@
 <mat-card cdkDrag [cdkDragDisabled]="!mutable" [cdkDragBoundary]="'#blueprint-container'" [cdkDragConstrainPosition]="constrainPosition"
   (cdkDragEnded)="onDragEnd($event)" [ngStyle]="style" mwlResizable [enableGhostResize]="true"
-  [ghostElementPositioning]="'absolute'" [resizeEdges]="{ bottom: mutable?true:false, right: mutable?true:false }" (resizeEnd)="onResizeEnd($event)"
+  [ghostElementPositioning]="'absolute'" [resizeEdges]="{ bottom: (mutable?true:false), right: (mutable?true:false) }" (resizeEnd)="onResizeEnd($event)"
   [resizeSnapGrid]="{ bottom: 10, right: 10 }" [resizeCursorPrecision]="10" [validateResize]="validate">
   <mat-card-header>
     <mat-card-title>
