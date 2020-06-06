@@ -37,6 +37,7 @@ import { LocationModule } from './location/location.module';
 import { ClassBuilderModule } from './class-builder/class-builder.module';
 import { ArchitectModule } from './architect/architect.module';
 import { UtilsModule } from './utils/utils.module';
+import { APP_BASE_HREF } from '@angular/common';
 
 export function tokenGetter() {
   return localStorage.getItem("access_token");
@@ -84,7 +85,7 @@ export function tokenGetter() {
     UtilsModule,
     AppRoutingModule,
   ],
-  providers: [],
+  providers: [{provide: APP_BASE_HREF, useValue: environment.baseHref}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

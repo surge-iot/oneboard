@@ -8,7 +8,8 @@ export const environment = {
   apiRoot: 'http://localhost:3000/api/',
   jwtConfig: {
     whitelistedDomains: ["localhost:3000"],
-  }
+  },
+  baseHref: '/'
 };
 
 /*
