@@ -6,6 +6,7 @@ import { PointService } from '../../../point/point.service';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { CreateLocationComponent } from 'src/app/location/components/create-location/create-location.component';
 import { ResponseService } from 'src/app/utils/services/response.service';
+import { LocationClassService } from 'src/app/location-class/location-class.service';
 @Component({
   selector: 'app-hierarchy',
   templateUrl: './hierarchy.component.html',
@@ -15,6 +16,7 @@ export class HierarchyComponent implements OnInit {
 
   constructor(
     private locationService: LocationService,
+    private locationClassService: LocationClassService,
     private equipmentService: EquipmentService,
     private _bottomSheet: MatBottomSheet,
     private pointService: PointService,
@@ -37,6 +39,7 @@ export class HierarchyComponent implements OnInit {
 
   async postInit() {
     const locations = await this.locationService.findAll().toPromise();
+    const locationClasses = await this.locationClassService.findAll().toPromise();
     const equipments = await this.equipmentService.findAll().toPromise();
     const points = await this.pointService.findAll().toPromise();
     this.nodes = locations.map(c => {
@@ -44,7 +47,8 @@ export class HierarchyComponent implements OnInit {
         id: 'location-' + c.id,
         modelId: c.id,
         label: c.name,
-        type: 'location'
+        type: 'location',
+        class: locationClasses.filter(lc => lc.id === c.classId)[0],
       }
     });
     this.nodes = [...this.nodes,
@@ -53,7 +57,7 @@ export class HierarchyComponent implements OnInit {
         id: 'equipment-' + c.id,
         modelId: c.id,
         label: c.name,
-        type: 'equipment'
+        type: 'equipment',
       }
     })];
     // Points
@@ -63,7 +67,7 @@ export class HierarchyComponent implements OnInit {
         id: 'point-' + c.id,
         modelId: c.id,
         label: c.classId,
-        type: 'point'
+        type: 'point',
       }
     })]
 

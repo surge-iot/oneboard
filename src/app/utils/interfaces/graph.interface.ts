@@ -3,6 +3,7 @@ export interface Node {
   label: string;
   modelId?:number;
   type?:string;
+  class?:any;
   dimension?: {
     width: number;
     height: number;
