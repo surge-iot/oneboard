@@ -70,7 +70,16 @@ export class HierarchyComponent implements OnInit {
         type: 'point',
       }
     })]
-
+    // Location Classes
+    this.nodes = [...this.nodes,
+      ...locationClasses.map(c => {
+        return {
+          id: 'location-class-' + c.id,
+          label: c.name,
+          type: 'location-class',
+          meta:c.meta,
+        }
+      })];
     let relationships = [];
     for (let l of locations) {
       relationships.push(...l.children.map(c => {

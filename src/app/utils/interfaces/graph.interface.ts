@@ -4,6 +4,7 @@ export interface Node {
   modelId?:number;
   type?:string;
   class?:any;
+  meta?:any;
   dimension?: {
     width: number;
     height: number;

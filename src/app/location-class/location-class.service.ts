@@ -10,6 +10,7 @@ export interface LocationClass {
   id: string;
   name: string;
   parentId: string;
+  meta:any;
 }
 
 @Injectable({

@@ -27,10 +27,18 @@ import { EquipmentModule } from '../equipment/equipment.module';
 import { PointModule } from '../point/point.module';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterModule } from '@angular/router';
+import { LocationClassNodeComponent } from './components/location-class-node/location-class-node.component';
 
 
 @NgModule({
-  declarations: [BlueprintComponent, HierarchyComponent, LocationNodeComponent, EquipmentNodeComponent, PointNodeComponent],
+  declarations: [
+    BlueprintComponent,
+    HierarchyComponent,
+    LocationNodeComponent,
+    EquipmentNodeComponent,
+    PointNodeComponent,
+    LocationClassNodeComponent,
+  ],
   imports: [
     // Angular
     CommonModule,
