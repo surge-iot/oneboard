@@ -71,15 +71,15 @@ export class HierarchyComponent implements OnInit {
       }
     })]
     // Location Classes
-    this.nodes = [...this.nodes,
-      ...locationClasses.map(c => {
-        return {
-          id: 'location-class-' + c.id,
-          label: c.name,
-          type: 'location-class',
-          meta:c.meta,
-        }
-      })];
+    // this.nodes = [...this.nodes,
+    //   ...locationClasses.map(c => {
+    //     return {
+    //       id: 'location-class-' + c.id,
+    //       label: c.name,
+    //       type: 'location-class',
+    //       meta:c.meta,
+    //     }
+    //   })];
     let relationships = [];
     for (let l of locations) {
       relationships.push(...l.children.map(c => {
@@ -138,17 +138,17 @@ export class HierarchyComponent implements OnInit {
           id: `link-pol-l${l.id}-p${p.id}`,
           source: 'location-' + l.id,
           target: 'point-' + p.id,
-          stroke: '#e91e63',
+          stroke: '#ff94c2',
           strokeDashArray: "10, 10"
         }
       }));
       // point of equipments
       relationships.push(...p.pointOfEquipments.map(e => {
         return {
-          id: `link-poe-l${e.id}-p${p.id}`,
+          id: `link-poe-e${e.id}-p${p.id}`,
           source: 'equipment-' + e.id,
           target: 'point-' + p.id,
-          stroke: '#e91e63',
+        stroke: '#ff94c2',
           strokeDashArray: "10, 10"
         }
       }));

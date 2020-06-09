@@ -11,6 +11,7 @@ import { CreateSubClassComponent } from '../create-sub-class/create-sub-class.co
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../../../utils/components/confirm-dialog/confirm-dialog.component';
 import { Node, Link } from '../../../utils/interfaces/graph.interface';
+import { DeviceClassService } from 'src/app/device-class/device-class.service';
 
 
 @Component({
@@ -32,12 +33,14 @@ export class BaseComponent {
     private locationClassService: LocationClassService,
     private equipmentClassService: EquipmentClassService,
     private pointClassService: PointClassService,
+    private deviceClassService: DeviceClassService,
     private _bottomSheet: MatBottomSheet,
     public _dialog: MatDialog) {
     this.services = {
       location: locationClassService,
       equipment: equipmentClassService,
-      point: pointClassService
+      point: pointClassService,
+      device: deviceClassService
     }
   }
   classType: string;
@@ -47,6 +50,7 @@ export class BaseComponent {
     location: LocationClassService,
     equipment: EquipmentClassService,
     point: PointClassService
+    device: DeviceClassService
   };
 
   ngOnInit() {
