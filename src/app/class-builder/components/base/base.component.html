@@ -16,6 +16,12 @@
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span>Class Builder: {{classType}}</span>
+      <span class="nav-right">
+        <button mat-icon-button aria-label="Switch to architect layout" matTooltip="Architect layout"
+          [routerLink]="'/architect/hierarchy'">
+          <mat-icon>account_tree</mat-icon>
+        </button>
+      </span>
     </mat-toolbar>
     <!-- Add Content Here -->
     <div style="height:100vh">

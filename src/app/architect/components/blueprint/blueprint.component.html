@@ -14,7 +14,11 @@
     <mat-toolbar color="primary">
       <span>Architect Blueprint</span>
       <span class="nav-right">
-        <button mat-icon-button aria-label="Switch to hierarchy layout" matTooltip="Hierarchy layout"
+        <button mat-icon-button aria-label="Switch to class-builder" matTooltip="Class builder"
+          [routerLink]="'/class-builder/location'">
+          <mat-icon>device_hub</mat-icon>
+        </button>
+        <button mat-icon-button aria-label="Switch to hierarchy layout" matTooltip="Topology layout"
           [routerLink]="'/architect/hierarchy'">
           <mat-icon>account_tree</mat-icon>
         </button>

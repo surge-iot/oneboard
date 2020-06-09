@@ -16,6 +16,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UtilsModule } from '../utils/utils.module';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [BaseComponent, CreateSubClassComponent],
@@ -34,6 +35,7 @@ import { UtilsModule } from '../utils/utils.module';
     MatBottomSheetModule,
     MatFormFieldModule,
     MatInputModule,
+    MatTooltipModule,
     // App
     UtilsModule,
     ClassBuilderRoutingModule,

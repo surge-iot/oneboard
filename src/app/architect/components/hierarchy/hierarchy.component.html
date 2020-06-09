@@ -3,8 +3,13 @@
     <mat-toolbar color="primary">
       <span>Architect Topology</span>
       <span class="nav-right">
-        <button mat-icon-button aria-label="Switch to blueprint layout" matTooltip="Blueprint layout" [routerLink]="'../blueprint'">
-          <mat-icon>view_compact</mat-icon>
+        <button mat-icon-button aria-label="Switch to class-builder" matTooltip="Class builder"
+          [routerLink]="'/class-builder/location'">
+          <mat-icon>device_hub</mat-icon>
+        </button>
+        <button mat-icon-button aria-label="Switch to blueprint layout" matTooltip="Blueprint layout"
+          [routerLink]="'../blueprint'">
+          <mat-icon>dashboard</mat-icon>
         </button>
       </span>
 
@@ -27,9 +32,15 @@
         </ng-template>
 
         <ng-template #nodeTemplate let-node>
-          <svg:g *ngIf="node.type==='location'" [node]="node" app-location-node (updated)="onUpdated($event)" (onEntryConnectorClick)="entryConnectorClick(node)" (onExitConnectorClick)="exitConnectorClick(node)" [mode]="mode"></svg:g>
-          <svg:g *ngIf="node.type==='equipment'" [node]="node" app-equipment-node (updated)="onUpdated($event)" (onEntryConnectorClick)="entryConnectorClick(node)" (onExitConnectorClick)="exitConnectorClick(node)" [mode]="mode"></svg:g>
-          <svg:g *ngIf="node.type==='point'" [node]="node" app-point-node (updated)="onUpdated($event)" (onEntryConnectorClick)="entryConnectorClick(node)" (onExitConnectorClick)="exitConnectorClick(node)" [mode]="mode"></svg:g>
+          <svg:g *ngIf="node.type==='location'" [node]="node" app-location-node (updated)="onUpdated($event)"
+            (onEntryConnectorClick)="entryConnectorClick(node)" (onExitConnectorClick)="exitConnectorClick(node)"
+            [mode]="mode"></svg:g>
+          <svg:g *ngIf="node.type==='equipment'" [node]="node" app-equipment-node (updated)="onUpdated($event)"
+            (onEntryConnectorClick)="entryConnectorClick(node)" (onExitConnectorClick)="exitConnectorClick(node)"
+            [mode]="mode"></svg:g>
+          <svg:g *ngIf="node.type==='point'" [node]="node" app-point-node (updated)="onUpdated($event)"
+            (onEntryConnectorClick)="entryConnectorClick(node)" (onExitConnectorClick)="exitConnectorClick(node)"
+            [mode]="mode"></svg:g>
         </ng-template>
 
         <ng-template #linkTemplate let-link>

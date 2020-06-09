@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   loginForm;
   constructor(private formBuilder: FormBuilder, private authService: AuthService, private responseService: ResponseService, private router: Router) {
     this.loginForm = this.formBuilder.group({
-      emailAddress: '',
+      email: '',
       password: ''
     });
   }
@@ -24,10 +24,15 @@ export class LoginComponent implements OnInit {
 
   login(user: User) {
     this.authService.login(user)
-      .subscribe((data: string) =>{
-        localStorage.setItem('access_token', data)
+      .subscribe((data) =>{
+        localStorage.setItem('access_token', data.access_token)
         this.responseService.handleSuccess('Login successful');
-        this.router.navigate(['/manager']);
+        if(this.authService.getUser().isAdmin) {
+          this.router.navigate(['/architect/blueprint']);
+        }
+        else{
+          this.router.navigate(['/manager']);
+        }
       }
     );
   }
