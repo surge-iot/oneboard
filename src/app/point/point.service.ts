@@ -12,6 +12,7 @@ export interface Point {
   meta: any;
   id: number;
   classId: string;
+  name?: string;
   locationId: number | null;
   equipmentId: number | null;
   pointOfLocations: Location[];

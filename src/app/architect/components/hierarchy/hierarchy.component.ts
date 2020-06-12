@@ -46,7 +46,7 @@ export class HierarchyComponent implements OnInit {
       return {
         id: 'location-' + c.id,
         modelId: c.id,
-        label: c.name,
+        label: c.name || c.id+":"+c.classId,
         type: 'location',
         class: locationClasses.filter(lc => lc.id === c.classId)[0],
       }
@@ -56,7 +56,7 @@ export class HierarchyComponent implements OnInit {
       return {
         id: 'equipment-' + c.id,
         modelId: c.id,
-        label: c.name,
+        label: c.name || c.id+":"+c.classId,
         type: 'equipment',
       }
     })];
@@ -66,7 +66,7 @@ export class HierarchyComponent implements OnInit {
       return {
         id: 'point-' + c.id,
         modelId: c.id,
-        label: c.classId,
+        label: c.name || c.id+":"+c.classId,
         type: 'point',
       }
     })]
@@ -116,22 +116,22 @@ export class HierarchyComponent implements OnInit {
     // points
     for (let p of points) {
       // is located in
-      if (!p.equipmentId) {
-        relationships.push({
-          id: `link-l${p.locationId}-p${p.id}`,
-          source: 'location-' + p.locationId,
-          target: 'point-' + p.id,
-          stroke: '#e91e63'
-        });
-      }
-      if (p.equipmentId) {
-        relationships.push({
-          id: `link-e${p.equipmentId}-p${p.id}`,
-          source: 'equipment-' + p.equipmentId,
-          target: 'point-' + p.id,
-          stroke: '#e91e63'
-        });
-      }
+      // if (!p.equipmentId) {
+      //   relationships.push({
+      //     id: `link-l${p.locationId}-p${p.id}`,
+      //     source: 'location-' + p.locationId,
+      //     target: 'point-' + p.id,
+      //     stroke: '#e91e63'
+      //   });
+      // }
+      // if (p.equipmentId) {
+      //   relationships.push({
+      //     id: `link-e${p.equipmentId}-p${p.id}`,
+      //     source: 'equipment-' + p.equipmentId,
+      //     target: 'point-' + p.id,
+      //     stroke: '#e91e63'
+      //   });
+      // }
       // point of locations
       relationships.push(...p.pointOfLocations.map(l => {
         return {
@@ -148,7 +148,7 @@ export class HierarchyComponent implements OnInit {
           id: `link-poe-e${e.id}-p${p.id}`,
           source: 'equipment-' + e.id,
           target: 'point-' + p.id,
-        stroke: '#ff94c2',
+          stroke: '#ff94c2',
           strokeDashArray: "10, 10"
         }
       }));
@@ -230,7 +230,7 @@ export class HierarchyComponent implements OnInit {
     else if (source.type === 'equipment' && target.type === 'point') {
       await this.pointService.addPointOfEquipment(target.modelId, source.modelId).toPromise();
     }
-    else{
+    else {
       this.responseService.openSnackBar("Invalid node combination")
 
     }
@@ -254,7 +254,7 @@ export class HierarchyComponent implements OnInit {
     else if (source.type === 'equipment' && target.type === 'point') {
       await this.pointService.removePointOfEquipment(target.modelId, source.modelId).toPromise();
     }
-    else{
+    else {
       this.responseService.openSnackBar("Invalid node combination")
 
     }
