@@ -27,6 +27,7 @@
     <!-- Add Content Here -->
     <div id="blueprint-container">
       <app-equipment *ngFor="let equipment of equipments" [equipment]="equipment" [mutable]="true"></app-equipment>
+      <app-point *ngFor="let point of points" [point]="point" [mutable]="true"></app-point>
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

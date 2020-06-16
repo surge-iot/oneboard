@@ -13,6 +13,10 @@ import { MatSliderModule } from '@angular/material/slider';
 import { TemperatureComponent } from './components/command/temperature/temperature.component';
 import { MatIcon, MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatCardModule } from '@angular/material/card';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { ResizableModule } from 'angular-resizable-element';
+import { PointComponent } from './components/point/point.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +24,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     SwitchComponent,
     SpeedComponent,
     TemperatureComponent,
+    PointComponent
   ],
   imports: [
     // Angular
@@ -34,8 +39,12 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatSliderModule,
     MatIconModule,
     MatTooltipModule,
+    MatCardModule,
+    DragDropModule,
     // App
     PointClassModule,
+    // 3rd party
+    ResizableModule,
   ],
   entryComponents: [
     CreatePointComponent,
@@ -45,6 +54,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     SwitchComponent,
     TemperatureComponent,
     SpeedComponent,
+    PointComponent,
   ]
 })
 export class PointModule { }

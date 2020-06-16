@@ -22,6 +22,7 @@
     <!-- the same view can be shown in more than one case -->
     <app-equipment-ceilingfan *ngSwitchCase="'FAN.CEILINGFAN'" [equipment]="equipment"></app-equipment-ceilingfan>
     <app-equipment-ac *ngSwitchCase="'HVAC.AHU'" [equipment]="equipment"></app-equipment-ac>
+    <app-equipment-ac *ngSwitchCase="'HVAC.IDU'" [equipment]="equipment"></app-equipment-ac>
     <app-equipment-ac *ngSwitchCase="'HVAC.TERMINALUNIT'" [equipment]="equipment"></app-equipment-ac>
     <app-equipment-light *ngSwitchCase="'LIGHTINGSYSTEM.LIGHT'" [equipment]="equipment"></app-equipment-light>
     <div *ngSwitchDefault>...</div>
