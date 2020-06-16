@@ -18,6 +18,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ResizableModule } from 'angular-resizable-element';
 import { PointComponent } from './components/point/point.component';
 import { DeviceModule } from '../device/device.module';
+import { PlotComponent } from './components/plot/plot.component';
+import { UtilsModule } from '../utils/utils.module';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { DeviceModule } from '../device/device.module';
     SwitchComponent,
     SpeedComponent,
     TemperatureComponent,
-    PointComponent
+    PointComponent,
+    PlotComponent
   ],
   imports: [
     // Angular
@@ -45,6 +48,7 @@ import { DeviceModule } from '../device/device.module';
     // App
     PointClassModule,
     DeviceModule,
+    UtilsModule,
     // 3rd party
     ResizableModule,
   ],
@@ -57,6 +61,7 @@ import { DeviceModule } from '../device/device.module';
     TemperatureComponent,
     SpeedComponent,
     PointComponent,
+    PlotComponent,
   ]
 })
 export class PointModule { }
