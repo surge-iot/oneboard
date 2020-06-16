@@ -17,6 +17,7 @@ import { MatCardModule } from '@angular/material/card';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ResizableModule } from 'angular-resizable-element';
 import { PointComponent } from './components/point/point.component';
+import { DeviceModule } from '../device/device.module';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { PointComponent } from './components/point/point.component';
     DragDropModule,
     // App
     PointClassModule,
+    DeviceModule,
     // 3rd party
     ResizableModule,
   ],

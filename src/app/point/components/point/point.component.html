@@ -19,13 +19,13 @@
       </svg>
     </div>
   </mat-card-header>
-  <ng-container [ngSwitch]="point.classId">
+  <ng-container [ngSwitch]="point.devices[0].classId">
     <!-- the same view can be shown in more than one case -->
     <!-- <app-point-ceilingfan *ngSwitchCase="'FAN.CEILINGFAN'" [point]="point"></app-point-ceilingfan>
     <app-point-ac *ngSwitchCase="'HVAC.AHU'" [point]="point"></app-point-ac>
     <app-point-ac *ngSwitchCase="'HVAC.TERMINALUNIT'" [point]="point"></app-point-ac>
     <app-point-light *ngSwitchCase="'LIGHTINGSYSTEM.LIGHT'" [point]="point"></app-point-light> -->
-    <div *ngSwitchCase="'SENSOR.POWER'"></div>
+    <app-device-schneider-meter *ngSwitchCase="'SCHNEIDERMETER'" [device]="point.devices[0]"></app-device-schneider-meter>
     <div *ngSwitchDefault>...</div>
   </ng-container>
 </mat-card>

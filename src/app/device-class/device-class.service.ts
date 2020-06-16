@@ -10,6 +10,7 @@ export interface DeviceClass {
   id: string;
   name: string;
   parentId: string;
+  meta: object;
 }
 
 @Injectable({

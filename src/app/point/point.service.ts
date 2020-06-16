@@ -6,6 +6,7 @@ import { ResponseService } from '../utils/services/response.service';
 import { catchError, retry } from 'rxjs/operators';
 import { Equipment } from '../equipment/equipment.service';
 import { Location } from '../location/location.service';
+import { Device } from '../device/device.service';
 
 
 export interface Point {
@@ -17,6 +18,7 @@ export interface Point {
   equipmentId: number | null;
   pointOfLocations: Location[];
   pointOfEquipments: Equipment[];
+  devices: Device[];
 }
 
 @Injectable({

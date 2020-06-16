@@ -17,6 +17,7 @@ import { AuthModule } from '../auth/auth.module';
 import { LocationModule } from '../location/location.module';
 import { OperateComponent } from './operate/operate.component';
 import { EquipmentModule } from '../equipment/equipment.module';
+import { PointModule } from '../point/point.module';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { EquipmentModule } from '../equipment/equipment.module';
     AuthModule,
     LocationModule,
     EquipmentModule,
+    PointModule,
   ]
 })
 export class ManagerModule { }

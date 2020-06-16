@@ -7,12 +7,14 @@ import { TopBarComponent } from './components/top-bar/top-bar.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { FillPipe } from './pipes/fill.pipe';
+import { SanitizePipe } from './pipes/sanitize.pipe';
 
 @NgModule({
   declarations: [
     ConfirmDialogComponent,
     TopBarComponent,
     FillPipe,
+    SanitizePipe
   ],
   imports: [
     // Angular
@@ -29,7 +31,8 @@ import { FillPipe } from './pipes/fill.pipe';
   exports: [
     ConfirmDialogComponent,
     TopBarComponent,
-    FillPipe
+    FillPipe,
+    SanitizePipe,
   ]
 })
 export class UtilsModule { }

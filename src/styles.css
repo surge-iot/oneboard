@@ -77,3 +77,7 @@ h6 {
 mat-card-actions.mat-card-actions{
   margin-bottom: 0;
 }
+
+iframe{
+  border:none;
+}

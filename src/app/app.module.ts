@@ -47,7 +47,7 @@ export function tokenGetter() {
   declarations: [
     AppComponent,
     WelcomeComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
   ],
   imports: [
     // Angular
