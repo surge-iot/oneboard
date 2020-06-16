@@ -3,6 +3,10 @@
     <h2>Create point</h2>
     <mat-label>Select Class</mat-label>
     <app-point-class-tree (selected)="onClassSelected($event)" ></app-point-class-tree>
+    <mat-form-field appearance="fill">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name">
+    </mat-form-field>
 
     <button mat-raised-button color="primary" type="submit">Save</button>
   </form>
