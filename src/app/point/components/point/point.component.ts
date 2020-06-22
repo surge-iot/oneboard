@@ -21,9 +21,12 @@ export class PointComponent implements OnInit {
   }
   ngOnInit(): void {
     this.point.meta = this.point.meta || { x: 100, y: 100, width: null, height: null };
-    this.style.top = `${this.point.meta.y || 100}px`;
-    this.style.left = `${this.point.meta.x || 100}px`;
-    this.style.width = `${this.point.meta.width || 200}px`;
+    this.point.meta.y = this.point.meta.y || 100;
+    this.point.meta.x = this.point.meta.x || 100;
+    this.point.meta.width = this.point.meta.width || 200;
+    this.style.top = `${this.point.meta.y}px`;
+    this.style.left = `${this.point.meta.x}px`;
+    this.style.width = `${this.point.meta.width}px`;
     this.style.height = `${this.point.meta.height}px`;
   }
   constrainPosition(point, dragRef) {

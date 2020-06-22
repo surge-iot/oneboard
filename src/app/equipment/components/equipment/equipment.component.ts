@@ -21,9 +21,12 @@ export class EquipmentComponent implements OnInit {
   }
   ngOnInit(): void {
     this.equipment.meta = this.equipment.meta || { x: 100, y: 100, width: null, height: null };
-    this.style.top = `${this.equipment.meta.y || 100}px`;
-    this.style.left = `${this.equipment.meta.x || 100}px`;
-    this.style.width = `${this.equipment.meta.width || 200}px`;
+    this.equipment.meta.y = this.equipment.meta.y || 100;
+    this.equipment.meta.x = this.equipment.meta.x || 100;
+    this.equipment.meta.width = this.equipment.meta.width || 200;
+    this.style.top = `${this.equipment.meta.y}px`;
+    this.style.left = `${this.equipment.meta.x}px`;
+    this.style.width = `${this.equipment.meta.width}px`;
     this.style.height = `${this.equipment.meta.height}px`;
   }
   constrainPosition(point, dragRef) {
