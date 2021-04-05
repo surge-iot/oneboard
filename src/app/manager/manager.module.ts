@@ -18,10 +18,12 @@ import { LocationModule } from '../location/location.module';
 import { OperateComponent } from './operate/operate.component';
 import { EquipmentModule } from '../equipment/equipment.module';
 import { PointModule } from '../point/point.module';
+import { AlertsComponent } from './alerts/alerts.component';
+import { UtilsModule } from '../utils/utils.module';
 
 
 @NgModule({
-  declarations: [HomeComponent, ManagerComponent, OperateComponent],
+  declarations: [HomeComponent, ManagerComponent, OperateComponent, AlertsComponent],
   imports: [
     // Angular
     CommonModule,
@@ -41,6 +43,7 @@ import { PointModule } from '../point/point.module';
     LocationModule,
     EquipmentModule,
     PointModule,
+    UtilsModule,
   ]
 })
 export class ManagerModule { }
