@@ -1,6 +1,9 @@
 # OneboardWeb
+Oneboard is an IoT platform that uses the topology and blueprint of built environments, generated from the metadata of a large variety of data points, to provide an interactive user interface and actionable insights.
+![oneboard-blueprint](https://user-images.githubusercontent.com/7351026/231485252-3aece9ee-e20f-4220-bd34-bf028de0d832.png)
+![oneboard-blueprint-commands](https://user-images.githubusercontent.com/7351026/231485304-4d5a138a-a44b-4a5c-82e1-dd5103bfcac1.png)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.4.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.4.cc
 
 ## Development server
 
